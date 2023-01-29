@@ -1,0 +1,28 @@
+C:\Users\moham\Desktop\GameRental\obj\Debug\GameRental.csproj.AssemblyReference.cache
+C:\Users\moham\Desktop\GameRental\obj\Debug\GameRental.Form1.resources
+C:\Users\moham\Desktop\GameRental\obj\Debug\GameRental.Properties.Resources.resources
+C:\Users\moham\Desktop\GameRental\obj\Debug\GameRental.csproj.GenerateResource.cache
+C:\Users\moham\Desktop\GameRental\obj\Debug\GameRental.csproj.CoreCompileInputs.cache
+C:\Users\moham\Desktop\GameRental\obj\Debug\Game Rental.exe
+C:\Users\moham\Desktop\GameRental\obj\Debug\Game Rental.pdb
+C:\Users\moham\Desktop\GameRental\bin\Debug\Game Rental.exe.config
+C:\Users\moham\Desktop\GameRental\bin\Debug\Game Rental.exe.manifest
+C:\Users\moham\Desktop\GameRental\bin\Debug\Game Rental.application
+C:\Users\moham\Desktop\GameRental\bin\Debug\Game Rental.exe
+C:\Users\moham\Desktop\GameRental\bin\Debug\Game Rental.pdb
+C:\Users\moham\Desktop\GameRental\obj\Debug\Game Rental.exe.manifest
+C:\Users\moham\Desktop\GameRental\obj\Debug\Game Rental.application
+D:\OneDrive - Cairo University - Students\Development\C#\game_rental\bin\Debug\Game Rental.exe.config
+D:\OneDrive - Cairo University - Students\Development\C#\game_rental\bin\Debug\Game Rental.exe.manifest
+D:\OneDrive - Cairo University - Students\Development\C#\game_rental\bin\Debug\Game Rental.application
+D:\OneDrive - Cairo University - Students\Development\C#\game_rental\bin\Debug\Game Rental.exe
+D:\OneDrive - Cairo University - Students\Development\C#\game_rental\bin\Debug\Game Rental.pdb
+D:\OneDrive - Cairo University - Students\Development\C#\game_rental\obj\Debug\GameRental.csproj.AssemblyReference.cache
+D:\OneDrive - Cairo University - Students\Development\C#\game_rental\obj\Debug\GameRental.Form1.resources
+D:\OneDrive - Cairo University - Students\Development\C#\game_rental\obj\Debug\GameRental.Properties.Resources.resources
+D:\OneDrive - Cairo University - Students\Development\C#\game_rental\obj\Debug\GameRental.csproj.GenerateResource.cache
+D:\OneDrive - Cairo University - Students\Development\C#\game_rental\obj\Debug\GameRental.csproj.CoreCompileInputs.cache
+D:\OneDrive - Cairo University - Students\Development\C#\game_rental\obj\Debug\Game Rental.exe.manifest
+D:\OneDrive - Cairo University - Students\Development\C#\game_rental\obj\Debug\Game Rental.application
+D:\OneDrive - Cairo University - Students\Development\C#\game_rental\obj\Debug\Game Rental.exe
+D:\OneDrive - Cairo University - Students\Development\C#\game_rental\obj\Debug\Game Rental.pdb

@@ -1,0 +1,119 @@
+create database gameRental;
+use gameRental;
+if exists (select 1
+           from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+           where r.fkeyid = object_id('RENT') and o.name = 'FK_RENT_CAN_CLIENT')
+alter table RENT
+    drop constraint FK_RENT_CAN_CLIENT
+go
+
+if exists (select 1
+           from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+           where r.fkeyid = object_id('RENT') and o.name = 'FK_RENT_RENT_GAME')
+alter table RENT
+    drop constraint FK_RENT_RENT_GAME
+go
+
+if exists (select 1
+           from  sysobjects
+           where  id = object_id('CLIENT')
+             and   type = 'U')
+    drop table CLIENT
+go
+
+if exists (select 1
+           from  sysobjects
+           where  id = object_id('GAME')
+             and   type = 'U')
+    drop table GAME
+go
+
+if exists (select 1
+           from  sysindexes
+           where  id    = object_id('RENT')
+             and   name  = 'RENT_FK'
+             and   indid > 0
+             and   indid < 255)
+    drop index RENT.RENT_FK
+go
+
+if exists (select 1
+           from  sysindexes
+           where  id    = object_id('RENT')
+             and   name  = 'CAN_FK'
+             and   indid > 0
+             and   indid < 255)
+    drop index RENT.CAN_FK
+go
+
+if exists (select 1
+           from  sysobjects
+           where  id = object_id('RENT')
+             and   type = 'U')
+    drop table RENT
+go
+
+/*==============================================================*/
+/* Table: CLIENT                                                */
+/*==============================================================*/
+create table CLIENT (
+                        FNAME                varchar(30)          not null,
+                        LNAME                varchar(30)          null,
+                        USERNAME             varchar(50)          not null,
+                        PASSWORD             varchar(30)          not null,
+                        ADMIN                bit                  not null,
+                        constraint PK_CLIENT primary key nonclustered (USERNAME)
+)
+go
+
+/*==============================================================*/
+/* Table: GAME                                                  */
+/*==============================================================*/
+create table GAME (
+                      GNAME                varchar(60)          not null,
+                      CATEGORY             varchar(20)          not null,
+                      RENT_PRICE_PER_DAY   float                not null,
+                      VENDORNAME           varchar(50)          not null,
+                      RELEASEDATE          datetime             not null,
+                      constraint PK_GAME primary key nonclustered (GNAME)
+)
+go
+
+/*==============================================================*/
+/* Table: RENT                                                  */
+/*==============================================================*/
+create table RENT (
+                      GNAME                varchar(60)          not null,
+                      USERNAME             varchar(50)          not null,
+                      DATE                 datetime             not null,
+                      ISRETURNED           bit                  null,
+                      RETURNDATE           datetime             null,
+                      constraint PK_RENT primary key nonclustered (GNAME, USERNAME, DATE)
+)
+go
+
+/*==============================================================*/
+/* Index: CAN_FK                                                */
+/*==============================================================*/
+create index CAN_FK on RENT (
+                             USERNAME ASC
+    )
+go
+
+/*==============================================================*/
+/* Index: RENT_FK                                               */
+/*==============================================================*/
+create index RENT_FK on RENT (
+                              GNAME ASC
+    )
+go
+
+alter table RENT
+    add constraint FK_RENT_CAN_CLIENT foreign key (USERNAME)
+        references CLIENT (USERNAME)
+go
+
+alter table RENT
+    add constraint FK_RENT_RENT_GAME foreign key (GNAME)
+        references GAME (GNAME)
+go
