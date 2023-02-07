@@ -1,3 +1,3 @@
 # Technologies:
 * C# 
-* Microsoft SQL Server Database.
+* Microsoft SQL Server LocalDB Database.

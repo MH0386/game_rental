@@ -63,6 +63,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.UserNameLogIn = new System.Windows.Forms.Label();
             this.GamesPanel = new System.Windows.Forms.Panel();
+            this.AddGamebtn2 = new System.Windows.Forms.Button();
             this.label26 = new System.Windows.Forms.Label();
             this.GameToDelete = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -77,16 +78,10 @@
             this.DeleteGame = new System.Windows.Forms.Button();
             this.SearchGameBtn = new System.Windows.Forms.Button();
             this.GamesFilters = new System.Windows.Forms.ComboBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.gNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cATEGORYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rENTPRICEPERDAYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vENDORNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rELEASEDATEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gAMEBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gameRentalDataSet = new GameRental.gameRental();
             this.GamesLabel = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.RentsPanel = new System.Windows.Forms.Panel();
+            this.AddRentingbtn2 = new System.Windows.Forms.Button();
             this.RentsSerachBtn = new System.Windows.Forms.Button();
             this.label28 = new System.Windows.Forms.Label();
             this.And2 = new System.Windows.Forms.Label();
@@ -100,11 +95,12 @@
             this.RentsSearch = new System.Windows.Forms.ComboBox();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.gNAMEDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uSERNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uSERNAMEDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dATEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iSRETURNEDDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.rETURNDATEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rENTBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gameRentalDataSet = new GameRental.GameRentalDataSet();
             this.RentsLabel = new System.Windows.Forms.Label();
             this.AboutUSPanel = new System.Windows.Forms.Panel();
             this.n6 = new System.Windows.Forms.Button();
@@ -121,6 +117,7 @@
             this.id1 = new System.Windows.Forms.Button();
             this.AboutUsLabel = new System.Windows.Forms.Label();
             this.usersPanel = new System.Windows.Forms.Panel();
+            this.AddUserbtn2 = new System.Windows.Forms.Button();
             this.NotAdmins = new System.Windows.Forms.RadioButton();
             this.AllAdmins = new System.Windows.Forms.RadioButton();
             this.UserSearchAttr = new System.Windows.Forms.Label();
@@ -164,29 +161,15 @@
             this.ViewReport = new System.Windows.Forms.Button();
             this.LogOutBtn = new System.Windows.Forms.Button();
             this.ContentPannel = new System.Windows.Forms.Panel();
-            this.EditDataPanel = new System.Windows.Forms.Panel();
-            this.isAdmin2 = new System.Windows.Forms.CheckBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.FN2 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.ApplyChanges = new System.Windows.Forms.Button();
-            this.LN2 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.PW2 = new System.Windows.Forms.TextBox();
-            this.UN2 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.QuickReportPanel = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label29 = new System.Windows.Forms.Label();
-            this.ReportText = new System.Windows.Forms.TextBox();
             this.AddRentingPanel = new System.Windows.Forms.Panel();
             this.label27 = new System.Windows.Forms.Label();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.gNAMEDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cATEGORYDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rENTPRICEPERDAYDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gAMEBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.gNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cATEGORYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rENTPRICEPERDAYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vENDORNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rELEASEDATEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gAMEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label25 = new System.Windows.Forms.Label();
             this.NewRentGameSearch = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -218,9 +201,26 @@
             this.GameVendor = new System.Windows.Forms.TextBox();
             this.GamePrice = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.cLIENTTableAdapter = new GameRental.gameRentalDataSetTableAdapters.CLIENTTableAdapter();
-            this.gAMETableAdapter = new GameRental.gameRentalDataSetTableAdapters.GAMETableAdapter();
-            this.rENTTableAdapter = new GameRental.gameRentalDataSetTableAdapters.RENTTableAdapter();
+            this.EditDataPanel = new System.Windows.Forms.Panel();
+            this.isAdmin2 = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.FN2 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.ApplyChanges = new System.Windows.Forms.Button();
+            this.LN2 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.PW2 = new System.Windows.Forms.TextBox();
+            this.UN2 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.QuickReportPanel = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.ReportText = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.gAMETableAdapter = new GameRental.GameRentalDataSetTableAdapters.GAMETableAdapter();
+            this.cLIENTTableAdapter = new GameRental.GameRentalDataSetTableAdapters.CLIENTTableAdapter();
+            this.rENTTableAdapter = new GameRental.GameRentalDataSetTableAdapters.RENTTableAdapter();
+            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.TitleBar.SuspendLayout();
             this.StatusBar.SuspendLayout();
             this.NavBar.SuspendLayout();
@@ -229,11 +229,10 @@
             this.LogInPanel.SuspendLayout();
             this.GamesPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gAMEBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gameRentalDataSet)).BeginInit();
             this.RentsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rENTBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gameRentalDataSet)).BeginInit();
             this.AboutUSPanel.SuspendLayout();
             this.usersPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -242,17 +241,18 @@
             this.homePanel.SuspendLayout();
             this.FeaturesPanel.SuspendLayout();
             this.ContentPannel.SuspendLayout();
-            this.EditDataPanel.SuspendLayout();
-            this.QuickReportPanel.SuspendLayout();
             this.AddRentingPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gAMEBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gAMEBindingSource)).BeginInit();
             this.NewGamePanel.SuspendLayout();
             this.EditGamePanel.SuspendLayout();
+            this.EditDataPanel.SuspendLayout();
+            this.QuickReportPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // TitleBar
             // 
+            this.TitleBar.AllowDrop = true;
             this.TitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TitleBar.Controls.Add(this.label1);
             this.TitleBar.Controls.Add(this.expandBtn);
@@ -274,7 +274,7 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(430, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(198, 36);
+            this.label1.Size = new System.Drawing.Size(164, 29);
             this.label1.TabIndex = 1;
             this.label1.Text = "Game Rental";
             // 
@@ -361,7 +361,7 @@
             this.VersionLabel.ForeColor = System.Drawing.Color.Red;
             this.VersionLabel.Location = new System.Drawing.Point(852, 10);
             this.VersionLabel.Name = "VersionLabel";
-            this.VersionLabel.Size = new System.Drawing.Size(53, 25);
+            this.VersionLabel.Size = new System.Drawing.Size(42, 20);
             this.VersionLabel.TabIndex = 1;
             this.VersionLabel.Text = "V1.0";
             // 
@@ -373,7 +373,7 @@
             this.Authority2.ForeColor = System.Drawing.Color.Teal;
             this.Authority2.Location = new System.Drawing.Point(399, 10);
             this.Authority2.Name = "Authority2";
-            this.Authority2.Size = new System.Drawing.Size(103, 26);
+            this.Authority2.Size = new System.Drawing.Size(85, 22);
             this.Authority2.TabIndex = 1;
             this.Authority2.Text = "Unknown";
             // 
@@ -385,7 +385,7 @@
             this.currentUserName2.ForeColor = System.Drawing.Color.Teal;
             this.currentUserName2.Location = new System.Drawing.Point(114, 10);
             this.currentUserName2.Name = "currentUserName2";
-            this.currentUserName2.Size = new System.Drawing.Size(117, 26);
+            this.currentUserName2.Size = new System.Drawing.Size(95, 22);
             this.currentUserName2.TabIndex = 1;
             this.currentUserName2.Text = "UserName";
             // 
@@ -397,7 +397,7 @@
             this.AuthorityLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.AuthorityLabel.Location = new System.Drawing.Point(307, 10);
             this.AuthorityLabel.Name = "AuthorityLabel";
-            this.AuthorityLabel.Size = new System.Drawing.Size(104, 26);
+            this.AuthorityLabel.Size = new System.Drawing.Size(86, 22);
             this.AuthorityLabel.TabIndex = 1;
             this.AuthorityLabel.Text = "Authority:";
             // 
@@ -409,7 +409,7 @@
             this.CurrentUserNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.CurrentUserNameLabel.Location = new System.Drawing.Point(12, 10);
             this.CurrentUserNameLabel.Name = "CurrentUserNameLabel";
-            this.CurrentUserNameLabel.Size = new System.Drawing.Size(129, 26);
+            this.CurrentUserNameLabel.Size = new System.Drawing.Size(105, 22);
             this.CurrentUserNameLabel.TabIndex = 1;
             this.CurrentUserNameLabel.Text = "User Name:";
             // 
@@ -556,7 +556,7 @@
             this.currentUserAuthority.ForeColor = System.Drawing.Color.Teal;
             this.currentUserAuthority.Location = new System.Drawing.Point(93, 28);
             this.currentUserAuthority.Name = "currentUserAuthority";
-            this.currentUserAuthority.Size = new System.Drawing.Size(56, 20);
+            this.currentUserAuthority.Size = new System.Drawing.Size(47, 17);
             this.currentUserAuthority.TabIndex = 1;
             this.currentUserAuthority.Text = "Admin";
             // 
@@ -570,7 +570,7 @@
             this.currentUserName.Location = new System.Drawing.Point(8, 69);
             this.currentUserName.MaximumSize = new System.Drawing.Size(100, 40);
             this.currentUserName.Name = "currentUserName";
-            this.currentUserName.Size = new System.Drawing.Size(64, 40);
+            this.currentUserName.Size = new System.Drawing.Size(89, 20);
             this.currentUserName.TabIndex = 0;
             this.currentUserName.Text = "User Name";
             // 
@@ -600,7 +600,7 @@
             this.signUp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.signUp.Location = new System.Drawing.Point(292, 286);
             this.signUp.Name = "signUp";
-            this.signUp.Size = new System.Drawing.Size(65, 20);
+            this.signUp.Size = new System.Drawing.Size(52, 16);
             this.signUp.TabIndex = 0;
             this.signUp.Text = "Sign up";
             this.signUp.Click += new System.EventHandler(this.currentUserName_Click);
@@ -630,7 +630,7 @@
             this.DHACC.ForeColor = System.Drawing.Color.Teal;
             this.DHACC.Location = new System.Drawing.Point(241, 263);
             this.DHACC.Name = "DHACC";
-            this.DHACC.Size = new System.Drawing.Size(184, 20);
+            this.DHACC.Size = new System.Drawing.Size(154, 17);
             this.DHACC.TabIndex = 0;
             this.DHACC.Text = "Don\'t Have An Accout?";
             // 
@@ -655,8 +655,9 @@
             this.logInPassword.Location = new System.Drawing.Point(243, 232);
             this.logInPassword.Name = "logInPassword";
             this.logInPassword.PasswordChar = '*';
-            this.logInPassword.Size = new System.Drawing.Size(144, 24);
+            this.logInPassword.Size = new System.Drawing.Size(144, 21);
             this.logInPassword.TabIndex = 1;
+            this.logInPassword.Text = "01283246699";
             this.logInPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.logInUserName_KeyDown);
             // 
             // logInUserName
@@ -664,8 +665,9 @@
             this.logInUserName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.logInUserName.Location = new System.Drawing.Point(243, 174);
             this.logInUserName.Name = "logInUserName";
-            this.logInUserName.Size = new System.Drawing.Size(144, 24);
+            this.logInUserName.Size = new System.Drawing.Size(144, 21);
             this.logInUserName.TabIndex = 0;
+            this.logInUserName.Text = "yussefmohamed4";
             this.logInUserName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.logInUserName_KeyDown);
             // 
             // PasswordLogIn
@@ -676,7 +678,7 @@
             this.PasswordLogIn.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.PasswordLogIn.Location = new System.Drawing.Point(71, 222);
             this.PasswordLogIn.Name = "PasswordLogIn";
-            this.PasswordLogIn.Size = new System.Drawing.Size(185, 39);
+            this.PasswordLogIn.Size = new System.Drawing.Size(149, 31);
             this.PasswordLogIn.TabIndex = 0;
             this.PasswordLogIn.Text = "Password: ";
             // 
@@ -688,7 +690,7 @@
             this.label4.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.label4.Location = new System.Drawing.Point(327, 67);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(161, 58);
+            this.label4.Size = new System.Drawing.Size(129, 46);
             this.label4.TabIndex = 0;
             this.label4.Text = "Log in";
             // 
@@ -700,12 +702,13 @@
             this.UserNameLogIn.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.UserNameLogIn.Location = new System.Drawing.Point(71, 165);
             this.UserNameLogIn.Name = "UserNameLogIn";
-            this.UserNameLogIn.Size = new System.Drawing.Size(207, 39);
+            this.UserNameLogIn.Size = new System.Drawing.Size(166, 31);
             this.UserNameLogIn.TabIndex = 0;
             this.UserNameLogIn.Text = "User Name: ";
             // 
             // GamesPanel
             // 
+            this.GamesPanel.Controls.Add(this.AddGamebtn2);
             this.GamesPanel.Controls.Add(this.label26);
             this.GamesPanel.Controls.Add(this.GameToDelete);
             this.GamesPanel.Controls.Add(this.button2);
@@ -720,13 +723,31 @@
             this.GamesPanel.Controls.Add(this.DeleteGame);
             this.GamesPanel.Controls.Add(this.SearchGameBtn);
             this.GamesPanel.Controls.Add(this.GamesFilters);
-            this.GamesPanel.Controls.Add(this.dataGridView2);
             this.GamesPanel.Controls.Add(this.GamesLabel);
+            this.GamesPanel.Controls.Add(this.dataGridView2);
             this.GamesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GamesPanel.Location = new System.Drawing.Point(0, 0);
             this.GamesPanel.Name = "GamesPanel";
             this.GamesPanel.Size = new System.Drawing.Size(751, 415);
             this.GamesPanel.TabIndex = 11;
+            // 
+            // AddGamebtn2
+            // 
+            this.AddGamebtn2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddGamebtn2.BackgroundImage")));
+            this.AddGamebtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.AddGamebtn2.FlatAppearance.BorderSize = 0;
+            this.AddGamebtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddGamebtn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddGamebtn2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.AddGamebtn2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddGamebtn2.Location = new System.Drawing.Point(53, 15);
+            this.AddGamebtn2.Name = "AddGamebtn2";
+            this.AddGamebtn2.Size = new System.Drawing.Size(197, 64);
+            this.AddGamebtn2.TabIndex = 10;
+            this.AddGamebtn2.Text = "Add New Game";
+            this.AddGamebtn2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.AddGamebtn2.UseVisualStyleBackColor = true;
+            this.AddGamebtn2.Click += new System.EventHandler(this.AddNewGame_Click);
             // 
             // label26
             // 
@@ -744,7 +765,7 @@
             this.GameToDelete.Location = new System.Drawing.Point(614, 297);
             this.GameToDelete.MaximumSize = new System.Drawing.Size(121, 300);
             this.GameToDelete.Name = "GameToDelete";
-            this.GameToDelete.Size = new System.Drawing.Size(121, 24);
+            this.GameToDelete.Size = new System.Drawing.Size(121, 21);
             this.GameToDelete.TabIndex = 9;
             this.GameToDelete.Visible = false;
             this.GameToDelete.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameToDelete_KeyDown);
@@ -771,7 +792,7 @@
             this.GameDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.GameDateTo.Location = new System.Drawing.Point(614, 209);
             this.GameDateTo.Name = "GameDateTo";
-            this.GameDateTo.Size = new System.Drawing.Size(121, 24);
+            this.GameDateTo.Size = new System.Drawing.Size(121, 21);
             this.GameDateTo.TabIndex = 7;
             this.GameDateTo.Visible = false;
             this.GameDateTo.ValueChanged += new System.EventHandler(this.GameDateTo_ValueChanged);
@@ -781,7 +802,7 @@
             this.GameDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.GameDateFrom.Location = new System.Drawing.Point(614, 162);
             this.GameDateFrom.Name = "GameDateFrom";
-            this.GameDateFrom.Size = new System.Drawing.Size(121, 24);
+            this.GameDateFrom.Size = new System.Drawing.Size(121, 21);
             this.GameDateFrom.TabIndex = 7;
             this.GameDateFrom.Visible = false;
             this.GameDateFrom.ValueChanged += new System.EventHandler(this.GameDateTo_ValueChanged);
@@ -793,7 +814,7 @@
             this.And.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.And.Location = new System.Drawing.Point(589, 186);
             this.And.Name = "And";
-            this.And.Size = new System.Drawing.Size(51, 25);
+            this.And.Size = new System.Drawing.Size(41, 20);
             this.And.TabIndex = 5;
             this.And.Text = "And";
             this.And.Visible = false;
@@ -805,7 +826,7 @@
             this.Attribute.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Attribute.Location = new System.Drawing.Point(638, 140);
             this.Attribute.Name = "Attribute";
-            this.Attribute.Size = new System.Drawing.Size(0, 25);
+            this.Attribute.Size = new System.Drawing.Size(0, 20);
             this.Attribute.TabIndex = 5;
             this.Attribute.Visible = false;
             // 
@@ -816,7 +837,7 @@
             this.Between.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Between.Location = new System.Drawing.Point(589, 140);
             this.Between.Name = "Between";
-            this.Between.Size = new System.Drawing.Size(95, 25);
+            this.Between.Size = new System.Drawing.Size(79, 20);
             this.Between.TabIndex = 5;
             this.Between.Text = "Between";
             this.Between.Visible = false;
@@ -825,7 +846,7 @@
             // 
             this.gameSearchBx3.Location = new System.Drawing.Point(614, 209);
             this.gameSearchBx3.Name = "gameSearchBx3";
-            this.gameSearchBx3.Size = new System.Drawing.Size(121, 24);
+            this.gameSearchBx3.Size = new System.Drawing.Size(121, 21);
             this.gameSearchBx3.TabIndex = 4;
             this.gameSearchBx3.Visible = false;
             this.gameSearchBx3.TextChanged += new System.EventHandler(this.gameSearchBx1_KeyDown);
@@ -834,7 +855,7 @@
             // 
             this.gameSearchBx2.Location = new System.Drawing.Point(614, 162);
             this.gameSearchBx2.Name = "gameSearchBx2";
-            this.gameSearchBx2.Size = new System.Drawing.Size(121, 24);
+            this.gameSearchBx2.Size = new System.Drawing.Size(121, 21);
             this.gameSearchBx2.TabIndex = 4;
             this.gameSearchBx2.Visible = false;
             this.gameSearchBx2.TextChanged += new System.EventHandler(this.gameSearchBx1_KeyDown);
@@ -843,7 +864,7 @@
             // 
             this.gameSearchBx1.Location = new System.Drawing.Point(614, 162);
             this.gameSearchBx1.Name = "gameSearchBx1";
-            this.gameSearchBx1.Size = new System.Drawing.Size(121, 24);
+            this.gameSearchBx1.Size = new System.Drawing.Size(121, 21);
             this.gameSearchBx1.TabIndex = 4;
             this.gameSearchBx1.Visible = false;
             this.gameSearchBx1.TextChanged += new System.EventHandler(this.gameSearchBx1_KeyDown);
@@ -895,80 +916,10 @@
             "Release Date"});
             this.GamesFilters.Location = new System.Drawing.Point(614, 99);
             this.GamesFilters.Name = "GamesFilters";
-            this.GamesFilters.Size = new System.Drawing.Size(121, 26);
+            this.GamesFilters.Size = new System.Drawing.Size(121, 23);
             this.GamesFilters.TabIndex = 2;
             this.GamesFilters.SelectedIndexChanged += new System.EventHandler(this.GamesFilters_SelectedIndexChanged);
             this.GamesFilters.Leave += new System.EventHandler(this.GamesFilters_Leave);
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dataGridView2.AutoGenerateColumns = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.gNAMEDataGridViewTextBoxColumn,
-            this.cATEGORYDataGridViewTextBoxColumn,
-            this.rENTPRICEPERDAYDataGridViewTextBoxColumn,
-            this.vENDORNAMEDataGridViewTextBoxColumn,
-            this.rELEASEDATEDataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.gAMEBindingSource;
-            this.dataGridView2.Location = new System.Drawing.Point(38, 88);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.Size = new System.Drawing.Size(545, 305);
-            this.dataGridView2.TabIndex = 1;
-            this.dataGridView2.SelectionChanged += new System.EventHandler(this.dataGridView2_SelectionChanged);
-            // 
-            // gNAMEDataGridViewTextBoxColumn
-            // 
-            this.gNAMEDataGridViewTextBoxColumn.DataPropertyName = "GNAME";
-            this.gNAMEDataGridViewTextBoxColumn.HeaderText = "GNAME";
-            this.gNAMEDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.gNAMEDataGridViewTextBoxColumn.Name = "gNAMEDataGridViewTextBoxColumn";
-            this.gNAMEDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // cATEGORYDataGridViewTextBoxColumn
-            // 
-            this.cATEGORYDataGridViewTextBoxColumn.DataPropertyName = "CATEGORY";
-            this.cATEGORYDataGridViewTextBoxColumn.HeaderText = "CATEGORY";
-            this.cATEGORYDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.cATEGORYDataGridViewTextBoxColumn.Name = "cATEGORYDataGridViewTextBoxColumn";
-            this.cATEGORYDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // rENTPRICEPERDAYDataGridViewTextBoxColumn
-            // 
-            this.rENTPRICEPERDAYDataGridViewTextBoxColumn.DataPropertyName = "RENT_PRICE_PER_DAY";
-            this.rENTPRICEPERDAYDataGridViewTextBoxColumn.HeaderText = "RENT_PRICE_PER_DAY";
-            this.rENTPRICEPERDAYDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.rENTPRICEPERDAYDataGridViewTextBoxColumn.Name = "rENTPRICEPERDAYDataGridViewTextBoxColumn";
-            this.rENTPRICEPERDAYDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // vENDORNAMEDataGridViewTextBoxColumn
-            // 
-            this.vENDORNAMEDataGridViewTextBoxColumn.DataPropertyName = "VENDORNAME";
-            this.vENDORNAMEDataGridViewTextBoxColumn.HeaderText = "VENDORNAME";
-            this.vENDORNAMEDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.vENDORNAMEDataGridViewTextBoxColumn.Name = "vENDORNAMEDataGridViewTextBoxColumn";
-            this.vENDORNAMEDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // rELEASEDATEDataGridViewTextBoxColumn
-            // 
-            this.rELEASEDATEDataGridViewTextBoxColumn.DataPropertyName = "RELEASEDATE";
-            this.rELEASEDATEDataGridViewTextBoxColumn.HeaderText = "RELEASEDATE";
-            this.rELEASEDATEDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.rELEASEDATEDataGridViewTextBoxColumn.Name = "rELEASEDATEDataGridViewTextBoxColumn";
-            this.rELEASEDATEDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // gAMEBindingSource
-            // 
-            this.gAMEBindingSource.DataMember = "GAME";
-            this.gAMEBindingSource.DataSource = this.gameRentalDataSet;
-            // 
-            // gameRentalDataSet
-            // 
-            this.gameRentalDataSet.DataSetName = "gameRentalDataSet";
-            this.gameRentalDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // GamesLabel
             // 
@@ -978,12 +929,24 @@
             this.GamesLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.GamesLabel.Location = new System.Drawing.Point(322, 13);
             this.GamesLabel.Name = "GamesLabel";
-            this.GamesLabel.Size = new System.Drawing.Size(131, 39);
+            this.GamesLabel.Size = new System.Drawing.Size(106, 31);
             this.GamesLabel.TabIndex = 0;
             this.GamesLabel.Text = "Games";
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(38, 88);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(545, 305);
+            this.dataGridView2.TabIndex = 1;
+            this.dataGridView2.SelectionChanged += new System.EventHandler(this.dataGridView2_SelectionChanged);
+            // 
             // RentsPanel
             // 
+            this.RentsPanel.Controls.Add(this.AddRentingbtn2);
             this.RentsPanel.Controls.Add(this.RentsSerachBtn);
             this.RentsPanel.Controls.Add(this.label28);
             this.RentsPanel.Controls.Add(this.And2);
@@ -1003,6 +966,24 @@
             this.RentsPanel.Size = new System.Drawing.Size(751, 415);
             this.RentsPanel.TabIndex = 12;
             // 
+            // AddRentingbtn2
+            // 
+            this.AddRentingbtn2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddRentingbtn2.BackgroundImage")));
+            this.AddRentingbtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.AddRentingbtn2.FlatAppearance.BorderSize = 0;
+            this.AddRentingbtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddRentingbtn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddRentingbtn2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.AddRentingbtn2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddRentingbtn2.Location = new System.Drawing.Point(59, 23);
+            this.AddRentingbtn2.Name = "AddRentingbtn2";
+            this.AddRentingbtn2.Size = new System.Drawing.Size(168, 63);
+            this.AddRentingbtn2.TabIndex = 18;
+            this.AddRentingbtn2.Text = "Rent A Game";
+            this.AddRentingbtn2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.AddRentingbtn2.UseVisualStyleBackColor = true;
+            this.AddRentingbtn2.Click += new System.EventHandler(this.AddRenting_Click);
+            // 
             // RentsSerachBtn
             // 
             this.RentsSerachBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RentsSerachBtn.BackgroundImage")));
@@ -1018,14 +999,14 @@
             this.RentsSerachBtn.Text = "Search";
             this.RentsSerachBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.RentsSerachBtn.UseVisualStyleBackColor = true;
-            this.RentsSerachBtn.Click += new System.EventHandler(this.RentsSearchBtn_Click);
+            this.RentsSerachBtn.Click += new System.EventHandler(this.RentsSerachBtn_Click);
             // 
             // label28
             // 
             this.label28.BackColor = System.Drawing.Color.DimGray;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label28.Location = new System.Drawing.Point(6, 62);
+            this.label28.Location = new System.Drawing.Point(6, 96);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(544, 27);
             this.label28.TabIndex = 16;
@@ -1038,7 +1019,7 @@
             this.And2.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.And2.Location = new System.Drawing.Point(559, 173);
             this.And2.Name = "And2";
-            this.And2.Size = new System.Drawing.Size(51, 25);
+            this.And2.Size = new System.Drawing.Size(41, 20);
             this.And2.TabIndex = 15;
             this.And2.Text = "And";
             this.And2.Visible = false;
@@ -1050,7 +1031,7 @@
             this.Between2.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Between2.Location = new System.Drawing.Point(559, 120);
             this.Between2.Name = "Between2";
-            this.Between2.Size = new System.Drawing.Size(102, 25);
+            this.Between2.Size = new System.Drawing.Size(84, 20);
             this.Between2.TabIndex = 15;
             this.Between2.Text = "Between:";
             this.Between2.Visible = false;
@@ -1062,7 +1043,7 @@
             this.RentSearchAttr.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.RentSearchAttr.Location = new System.Drawing.Point(595, 115);
             this.RentSearchAttr.Name = "RentSearchAttr";
-            this.RentSearchAttr.Size = new System.Drawing.Size(0, 25);
+            this.RentSearchAttr.Size = new System.Drawing.Size(0, 20);
             this.RentSearchAttr.TabIndex = 14;
             this.RentSearchAttr.Visible = false;
             // 
@@ -1071,7 +1052,7 @@
             this.RentsDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.RentsDateTo.Location = new System.Drawing.Point(563, 199);
             this.RentsDateTo.Name = "RentsDateTo";
-            this.RentsDateTo.Size = new System.Drawing.Size(171, 24);
+            this.RentsDateTo.Size = new System.Drawing.Size(171, 21);
             this.RentsDateTo.TabIndex = 13;
             this.RentsDateTo.Visible = false;
             this.RentsDateTo.ValueChanged += new System.EventHandler(this.RentsDateTo_ValueChanged);
@@ -1081,7 +1062,7 @@
             this.RentsDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.RentsDateFrom.Location = new System.Drawing.Point(563, 146);
             this.RentsDateFrom.Name = "RentsDateFrom";
-            this.RentsDateFrom.Size = new System.Drawing.Size(171, 24);
+            this.RentsDateFrom.Size = new System.Drawing.Size(171, 21);
             this.RentsDateFrom.TabIndex = 12;
             this.RentsDateFrom.Visible = false;
             this.RentsDateFrom.ValueChanged += new System.EventHandler(this.RentsDateTo_ValueChanged);
@@ -1093,7 +1074,7 @@
             this.AllNotReturnedGames.ForeColor = System.Drawing.Color.White;
             this.AllNotReturnedGames.Location = new System.Drawing.Point(563, 187);
             this.AllNotReturnedGames.Name = "AllNotReturnedGames";
-            this.AllNotReturnedGames.Size = new System.Drawing.Size(189, 22);
+            this.AllNotReturnedGames.Size = new System.Drawing.Size(157, 19);
             this.AllNotReturnedGames.TabIndex = 11;
             this.AllNotReturnedGames.TabStop = true;
             this.AllNotReturnedGames.Text = "All Not Returned Games";
@@ -1108,7 +1089,7 @@
             this.AllReturnedGames.ForeColor = System.Drawing.Color.White;
             this.AllReturnedGames.Location = new System.Drawing.Point(563, 147);
             this.AllReturnedGames.Name = "AllReturnedGames";
-            this.AllReturnedGames.Size = new System.Drawing.Size(161, 22);
+            this.AllReturnedGames.Size = new System.Drawing.Size(135, 19);
             this.AllReturnedGames.TabIndex = 10;
             this.AllReturnedGames.TabStop = true;
             this.AllReturnedGames.Text = "All Returned Games";
@@ -1120,7 +1101,7 @@
             // 
             this.RentsTextBox.Location = new System.Drawing.Point(606, 149);
             this.RentsTextBox.Name = "RentsTextBox";
-            this.RentsTextBox.Size = new System.Drawing.Size(100, 24);
+            this.RentsTextBox.Size = new System.Drawing.Size(100, 21);
             this.RentsTextBox.TabIndex = 9;
             this.RentsTextBox.Visible = false;
             this.RentsTextBox.TextChanged += new System.EventHandler(this.RentsTextBox_TextChanged);
@@ -1138,7 +1119,7 @@
             "Return Date"});
             this.RentsSearch.Location = new System.Drawing.Point(594, 82);
             this.RentsSearch.Name = "RentsSearch";
-            this.RentsSearch.Size = new System.Drawing.Size(127, 26);
+            this.RentsSearch.Size = new System.Drawing.Size(127, 23);
             this.RentsSearch.TabIndex = 8;
             this.RentsSearch.TextChanged += new System.EventHandler(this.RentsSearch_TextChanged);
             // 
@@ -1150,61 +1131,55 @@
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.gNAMEDataGridViewTextBoxColumn1,
-            this.uSERNAMEDataGridViewTextBoxColumn,
+            this.uSERNAMEDataGridViewTextBoxColumn1,
             this.dATEDataGridViewTextBoxColumn,
             this.iSRETURNEDDataGridViewCheckBoxColumn,
             this.rETURNDATEDataGridViewTextBoxColumn});
             this.dataGridView3.DataSource = this.rENTBindingSource;
-            this.dataGridView3.Location = new System.Drawing.Point(6, 62);
+            this.dataGridView3.Location = new System.Drawing.Point(6, 99);
             this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowHeadersWidth = 51;
-            this.dataGridView3.Size = new System.Drawing.Size(544, 342);
+            this.dataGridView3.Size = new System.Drawing.Size(544, 305);
             this.dataGridView3.TabIndex = 1;
             // 
             // gNAMEDataGridViewTextBoxColumn1
             // 
             this.gNAMEDataGridViewTextBoxColumn1.DataPropertyName = "GNAME";
             this.gNAMEDataGridViewTextBoxColumn1.HeaderText = "GNAME";
-            this.gNAMEDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.gNAMEDataGridViewTextBoxColumn1.Name = "gNAMEDataGridViewTextBoxColumn1";
-            this.gNAMEDataGridViewTextBoxColumn1.Width = 125;
             // 
-            // uSERNAMEDataGridViewTextBoxColumn
+            // uSERNAMEDataGridViewTextBoxColumn1
             // 
-            this.uSERNAMEDataGridViewTextBoxColumn.DataPropertyName = "USERNAME";
-            this.uSERNAMEDataGridViewTextBoxColumn.HeaderText = "USERNAME";
-            this.uSERNAMEDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.uSERNAMEDataGridViewTextBoxColumn.Name = "uSERNAMEDataGridViewTextBoxColumn";
-            this.uSERNAMEDataGridViewTextBoxColumn.Width = 125;
+            this.uSERNAMEDataGridViewTextBoxColumn1.DataPropertyName = "USERNAME";
+            this.uSERNAMEDataGridViewTextBoxColumn1.HeaderText = "USERNAME";
+            this.uSERNAMEDataGridViewTextBoxColumn1.Name = "uSERNAMEDataGridViewTextBoxColumn1";
             // 
             // dATEDataGridViewTextBoxColumn
             // 
             this.dATEDataGridViewTextBoxColumn.DataPropertyName = "DATE";
             this.dATEDataGridViewTextBoxColumn.HeaderText = "DATE";
-            this.dATEDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.dATEDataGridViewTextBoxColumn.Name = "dATEDataGridViewTextBoxColumn";
-            this.dATEDataGridViewTextBoxColumn.Width = 125;
             // 
             // iSRETURNEDDataGridViewCheckBoxColumn
             // 
             this.iSRETURNEDDataGridViewCheckBoxColumn.DataPropertyName = "ISRETURNED";
             this.iSRETURNEDDataGridViewCheckBoxColumn.HeaderText = "ISRETURNED";
-            this.iSRETURNEDDataGridViewCheckBoxColumn.MinimumWidth = 6;
             this.iSRETURNEDDataGridViewCheckBoxColumn.Name = "iSRETURNEDDataGridViewCheckBoxColumn";
-            this.iSRETURNEDDataGridViewCheckBoxColumn.Width = 125;
             // 
             // rETURNDATEDataGridViewTextBoxColumn
             // 
             this.rETURNDATEDataGridViewTextBoxColumn.DataPropertyName = "RETURNDATE";
             this.rETURNDATEDataGridViewTextBoxColumn.HeaderText = "RETURNDATE";
-            this.rETURNDATEDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.rETURNDATEDataGridViewTextBoxColumn.Name = "rETURNDATEDataGridViewTextBoxColumn";
-            this.rETURNDATEDataGridViewTextBoxColumn.Width = 125;
             // 
             // rENTBindingSource
             // 
             this.rENTBindingSource.DataMember = "RENT";
             this.rENTBindingSource.DataSource = this.gameRentalDataSet;
+            // 
+            // gameRentalDataSet
+            // 
+            this.gameRentalDataSet.DataSetName = "GameRentalDataSet";
+            this.gameRentalDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // RentsLabel
             // 
@@ -1214,7 +1189,7 @@
             this.RentsLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.RentsLabel.Location = new System.Drawing.Point(330, 13);
             this.RentsLabel.Name = "RentsLabel";
-            this.RentsLabel.Size = new System.Drawing.Size(111, 39);
+            this.RentsLabel.Size = new System.Drawing.Size(91, 31);
             this.RentsLabel.TabIndex = 0;
             this.RentsLabel.Text = "Rents";
             // 
@@ -1250,7 +1225,7 @@
             this.n6.Name = "n6";
             this.n6.Size = new System.Drawing.Size(404, 40);
             this.n6.TabIndex = 1;
-            this.n6.Text = "Ahmed Mohamed Majeed";
+            this.n6.Text = "أحمد محمد مجيد الزيدي";
             this.n6.UseVisualStyleBackColor = true;
             // 
             // id6
@@ -1272,13 +1247,13 @@
             this.n5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.n5.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonFace;
             this.n5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.n5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
+            this.n5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.n5.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.n5.Location = new System.Drawing.Point(287, 289);
             this.n5.Name = "n5";
             this.n5.Size = new System.Drawing.Size(404, 40);
             this.n5.TabIndex = 1;
-            this.n5.Text = "Hadi Saad El-deen";
+            this.n5.Text = "هادي سعد الدين رشدي";
             this.n5.UseVisualStyleBackColor = true;
             // 
             // id5
@@ -1300,13 +1275,13 @@
             this.n4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.n4.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonFace;
             this.n4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.n4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
+            this.n4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.n4.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.n4.Location = new System.Drawing.Point(287, 238);
             this.n4.Name = "n4";
             this.n4.Size = new System.Drawing.Size(404, 40);
             this.n4.TabIndex = 1;
-            this.n4.Text = "Youssef Hatem Ibrahim Mohamed";
+            this.n4.Text = "يوسف حاتم إبراهيم محمد";
             this.n4.UseVisualStyleBackColor = true;
             // 
             // id3
@@ -1328,28 +1303,27 @@
             this.n1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.n1.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonFace;
             this.n1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.n1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
+            this.n1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.n1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.n1.Location = new System.Drawing.Point(285, 85);
             this.n1.Name = "n1";
             this.n1.Size = new System.Drawing.Size(404, 40);
             this.n1.TabIndex = 1;
-            this.n1.Text = "Youssef Mohamed Abdelhay";
+            this.n1.Text = "يوسف محمد عبد الحي علي";
             this.n1.UseVisualStyleBackColor = true;
-            this.n1.Click += new System.EventHandler(this.n1_Click);
             // 
             // n3
             // 
             this.n3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.n3.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonFace;
             this.n3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.n3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
+            this.n3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.n3.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.n3.Location = new System.Drawing.Point(287, 187);
             this.n3.Name = "n3";
             this.n3.Size = new System.Drawing.Size(404, 40);
             this.n3.TabIndex = 1;
-            this.n3.Text = "Mohamed Hisham Abdelzaher";
+            this.n3.Text = "محمد هشام عبد الظاهر";
             this.n3.UseVisualStyleBackColor = true;
             // 
             // id4
@@ -1371,13 +1345,13 @@
             this.n2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.n2.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonFace;
             this.n2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.n2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.n2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.n2.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.n2.Location = new System.Drawing.Point(291, 138);
             this.n2.Name = "n2";
             this.n2.Size = new System.Drawing.Size(404, 40);
             this.n2.TabIndex = 1;
-            this.n2.Text = "Abdelrahman Mustafa Mohamad";
+            this.n2.Text = "عبد الرحمن مصطفي محمد";
             this.n2.UseVisualStyleBackColor = true;
             // 
             // id2
@@ -1416,12 +1390,13 @@
             this.AboutUsLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.AboutUsLabel.Location = new System.Drawing.Point(306, 13);
             this.AboutUsLabel.Name = "AboutUsLabel";
-            this.AboutUsLabel.Size = new System.Drawing.Size(171, 39);
+            this.AboutUsLabel.Size = new System.Drawing.Size(138, 31);
             this.AboutUsLabel.TabIndex = 0;
             this.AboutUsLabel.Text = "About US";
             // 
             // usersPanel
             // 
+            this.usersPanel.Controls.Add(this.AddUserbtn2);
             this.usersPanel.Controls.Add(this.NotAdmins);
             this.usersPanel.Controls.Add(this.AllAdmins);
             this.usersPanel.Controls.Add(this.UserSearchAttr);
@@ -1440,6 +1415,24 @@
             this.usersPanel.Size = new System.Drawing.Size(751, 415);
             this.usersPanel.TabIndex = 10;
             // 
+            // AddUserbtn2
+            // 
+            this.AddUserbtn2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddUserbtn2.BackgroundImage")));
+            this.AddUserbtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.AddUserbtn2.FlatAppearance.BorderSize = 0;
+            this.AddUserbtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddUserbtn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddUserbtn2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.AddUserbtn2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AddUserbtn2.Location = new System.Drawing.Point(56, 13);
+            this.AddUserbtn2.Name = "AddUserbtn2";
+            this.AddUserbtn2.Size = new System.Drawing.Size(149, 66);
+            this.AddUserbtn2.TabIndex = 19;
+            this.AddUserbtn2.Text = "Add New User";
+            this.AddUserbtn2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.AddUserbtn2.UseVisualStyleBackColor = true;
+            this.AddUserbtn2.Click += new System.EventHandler(this.AddNewUser_Click);
+            // 
             // NotAdmins
             // 
             this.NotAdmins.AutoSize = true;
@@ -1447,7 +1440,7 @@
             this.NotAdmins.ForeColor = System.Drawing.Color.White;
             this.NotAdmins.Location = new System.Drawing.Point(391, 168);
             this.NotAdmins.Name = "NotAdmins";
-            this.NotAdmins.Size = new System.Drawing.Size(125, 22);
+            this.NotAdmins.Size = new System.Drawing.Size(104, 19);
             this.NotAdmins.TabIndex = 18;
             this.NotAdmins.TabStop = true;
             this.NotAdmins.Text = "All Not Admins";
@@ -1462,7 +1455,7 @@
             this.AllAdmins.ForeColor = System.Drawing.Color.White;
             this.AllAdmins.Location = new System.Drawing.Point(391, 131);
             this.AllAdmins.Name = "AllAdmins";
-            this.AllAdmins.Size = new System.Drawing.Size(97, 22);
+            this.AllAdmins.Size = new System.Drawing.Size(82, 19);
             this.AllAdmins.TabIndex = 18;
             this.AllAdmins.TabStop = true;
             this.AllAdmins.Text = "All Admins";
@@ -1477,7 +1470,7 @@
             this.UserSearchAttr.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.UserSearchAttr.Location = new System.Drawing.Point(387, 105);
             this.UserSearchAttr.Name = "UserSearchAttr";
-            this.UserSearchAttr.Size = new System.Drawing.Size(0, 25);
+            this.UserSearchAttr.Size = new System.Drawing.Size(0, 20);
             this.UserSearchAttr.TabIndex = 15;
             this.UserSearchAttr.Visible = false;
             // 
@@ -1536,7 +1529,7 @@
             // 
             this.label2.BackColor = System.Drawing.Color.DimGray;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(15, 69);
+            this.label2.Location = new System.Drawing.Point(15, 83);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(343, 31);
             this.label2.TabIndex = 3;
@@ -1550,7 +1543,7 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label3.Location = new System.Drawing.Point(330, 13);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 39);
+            this.label3.Size = new System.Drawing.Size(91, 31);
             this.label3.TabIndex = 2;
             this.label3.Text = "Users";
             // 
@@ -1559,41 +1552,33 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeight = 29;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.fNAMEDataGridViewTextBoxColumn,
             this.lNAMEDataGridViewTextBoxColumn,
             this.aDMINDataGridViewCheckBoxColumn});
             this.dataGridView1.DataSource = this.cLIENTBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 75);
+            this.dataGridView1.Location = new System.Drawing.Point(15, 88);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(343, 329);
+            this.dataGridView1.Size = new System.Drawing.Size(343, 316);
             this.dataGridView1.TabIndex = 4;
             // 
             // fNAMEDataGridViewTextBoxColumn
             // 
             this.fNAMEDataGridViewTextBoxColumn.DataPropertyName = "FNAME";
             this.fNAMEDataGridViewTextBoxColumn.HeaderText = "FNAME";
-            this.fNAMEDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.fNAMEDataGridViewTextBoxColumn.Name = "fNAMEDataGridViewTextBoxColumn";
-            this.fNAMEDataGridViewTextBoxColumn.Width = 125;
             // 
             // lNAMEDataGridViewTextBoxColumn
             // 
             this.lNAMEDataGridViewTextBoxColumn.DataPropertyName = "LNAME";
             this.lNAMEDataGridViewTextBoxColumn.HeaderText = "LNAME";
-            this.lNAMEDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.lNAMEDataGridViewTextBoxColumn.Name = "lNAMEDataGridViewTextBoxColumn";
-            this.lNAMEDataGridViewTextBoxColumn.Width = 125;
             // 
             // aDMINDataGridViewCheckBoxColumn
             // 
             this.aDMINDataGridViewCheckBoxColumn.DataPropertyName = "ADMIN";
             this.aDMINDataGridViewCheckBoxColumn.HeaderText = "ADMIN";
-            this.aDMINDataGridViewCheckBoxColumn.MinimumWidth = 6;
             this.aDMINDataGridViewCheckBoxColumn.Name = "aDMINDataGridViewCheckBoxColumn";
-            this.aDMINDataGridViewCheckBoxColumn.Width = 125;
             // 
             // cLIENTBindingSource
             // 
@@ -1604,7 +1589,7 @@
             // 
             this.UserSearchBox.Location = new System.Drawing.Point(391, 133);
             this.UserSearchBox.Name = "UserSearchBox";
-            this.UserSearchBox.Size = new System.Drawing.Size(121, 24);
+            this.UserSearchBox.Size = new System.Drawing.Size(121, 21);
             this.UserSearchBox.TabIndex = 16;
             this.UserSearchBox.Visible = false;
             this.UserSearchBox.TextChanged += new System.EventHandler(this.UserSearchBox_TextChanged);
@@ -1622,7 +1607,7 @@
             "Authority"});
             this.UserSearchOption.Location = new System.Drawing.Point(391, 75);
             this.UserSearchOption.Name = "UserSearchOption";
-            this.UserSearchOption.Size = new System.Drawing.Size(135, 26);
+            this.UserSearchOption.Size = new System.Drawing.Size(135, 23);
             this.UserSearchOption.TabIndex = 17;
             this.UserSearchOption.TextChanged += new System.EventHandler(this.UserSearchOption_TextChanged);
             // 
@@ -1655,7 +1640,7 @@
             this.isAdmin.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.isAdmin.Location = new System.Drawing.Point(38, 271);
             this.isAdmin.Name = "isAdmin";
-            this.isAdmin.Size = new System.Drawing.Size(101, 29);
+            this.isAdmin.Size = new System.Drawing.Size(82, 24);
             this.isAdmin.TabIndex = 5;
             this.isAdmin.Text = "Admin?";
             this.isAdmin.UseVisualStyleBackColor = true;
@@ -1682,7 +1667,7 @@
             this.FNameLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.FNameLabel.Location = new System.Drawing.Point(35, 82);
             this.FNameLabel.Name = "FNameLabel";
-            this.FNameLabel.Size = new System.Drawing.Size(112, 25);
+            this.FNameLabel.Size = new System.Drawing.Size(90, 20);
             this.FNameLabel.TabIndex = 2;
             this.FNameLabel.Text = "First Name:";
             // 
@@ -1691,7 +1676,7 @@
             this.FName.Location = new System.Drawing.Point(142, 88);
             this.FName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.FName.Name = "FName";
-            this.FName.Size = new System.Drawing.Size(160, 24);
+            this.FName.Size = new System.Drawing.Size(160, 21);
             this.FName.TabIndex = 1;
             // 
             // LNameLable
@@ -1701,7 +1686,7 @@
             this.LNameLable.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.LNameLable.Location = new System.Drawing.Point(34, 129);
             this.LNameLable.Name = "LNameLable";
-            this.LNameLable.Size = new System.Drawing.Size(112, 25);
+            this.LNameLable.Size = new System.Drawing.Size(90, 20);
             this.LNameLable.TabIndex = 2;
             this.LNameLable.Text = "Last Name:";
             // 
@@ -1712,7 +1697,7 @@
             this.label24.ForeColor = System.Drawing.Color.IndianRed;
             this.label24.Location = new System.Drawing.Point(348, 177);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(325, 25);
+            this.label24.Size = new System.Drawing.Size(260, 20);
             this.label24.TabIndex = 2;
             this.label24.Text = "You Will Use User Name To Log in !";
             // 
@@ -1723,7 +1708,7 @@
             this.userNameLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.userNameLabel.Location = new System.Drawing.Point(34, 177);
             this.userNameLabel.Name = "userNameLabel";
-            this.userNameLabel.Size = new System.Drawing.Size(116, 25);
+            this.userNameLabel.Size = new System.Drawing.Size(93, 20);
             this.userNameLabel.TabIndex = 2;
             this.userNameLabel.Text = "User Name:";
             // 
@@ -1751,7 +1736,7 @@
             this.LName.Location = new System.Drawing.Point(142, 132);
             this.LName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LName.Name = "LName";
-            this.LName.Size = new System.Drawing.Size(160, 24);
+            this.LName.Size = new System.Drawing.Size(160, 21);
             this.LName.TabIndex = 2;
             // 
             // PasswordLabel
@@ -1761,7 +1746,7 @@
             this.PasswordLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.PasswordLabel.Location = new System.Drawing.Point(34, 224);
             this.PasswordLabel.Name = "PasswordLabel";
-            this.PasswordLabel.Size = new System.Drawing.Size(104, 25);
+            this.PasswordLabel.Size = new System.Drawing.Size(82, 20);
             this.PasswordLabel.TabIndex = 2;
             this.PasswordLabel.Text = "Password:";
             // 
@@ -1770,7 +1755,7 @@
             this.Password.Location = new System.Drawing.Point(142, 224);
             this.Password.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Password.Name = "Password";
-            this.Password.Size = new System.Drawing.Size(160, 24);
+            this.Password.Size = new System.Drawing.Size(160, 21);
             this.Password.TabIndex = 4;
             // 
             // userName
@@ -1778,7 +1763,7 @@
             this.userName.Location = new System.Drawing.Point(142, 179);
             this.userName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.userName.Name = "userName";
-            this.userName.Size = new System.Drawing.Size(160, 24);
+            this.userName.Size = new System.Drawing.Size(160, 21);
             this.userName.TabIndex = 3;
             // 
             // label5
@@ -1789,7 +1774,7 @@
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label5.Location = new System.Drawing.Point(319, 15);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(140, 39);
+            this.label5.Size = new System.Drawing.Size(112, 31);
             this.label5.TabIndex = 2;
             this.label5.Text = "Sign up";
             // 
@@ -1943,7 +1928,7 @@
             this.HomeLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.HomeLabel.Location = new System.Drawing.Point(330, 13);
             this.HomeLabel.Name = "HomeLabel";
-            this.HomeLabel.Size = new System.Drawing.Size(112, 39);
+            this.HomeLabel.Size = new System.Drawing.Size(90, 31);
             this.HomeLabel.TabIndex = 0;
             this.HomeLabel.Text = "Home";
             // 
@@ -1985,220 +1970,20 @@
             this.ContentPannel.Controls.Add(this.LogInPanel);
             this.ContentPannel.Controls.Add(this.homePanel);
             this.ContentPannel.Controls.Add(this.RentsPanel);
+            this.ContentPannel.Controls.Add(this.GamesPanel);
             this.ContentPannel.Controls.Add(this.usersPanel);
-            this.ContentPannel.Controls.Add(this.QuickReportPanel);
             this.ContentPannel.Controls.Add(this.AddRentingPanel);
             this.ContentPannel.Controls.Add(this.NewGamePanel);
             this.ContentPannel.Controls.Add(this.EditGamePanel);
             this.ContentPannel.Controls.Add(this.AboutUSPanel);
             this.ContentPannel.Controls.Add(this.EditDataPanel);
             this.ContentPannel.Controls.Add(this.addUserPanel);
-            this.ContentPannel.Controls.Add(this.GamesPanel);
+            this.ContentPannel.Controls.Add(this.QuickReportPanel);
             this.ContentPannel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContentPannel.Location = new System.Drawing.Point(157, 46);
             this.ContentPannel.Name = "ContentPannel";
             this.ContentPannel.Size = new System.Drawing.Size(751, 415);
             this.ContentPannel.TabIndex = 11;
-            // 
-            // EditDataPanel
-            // 
-            this.EditDataPanel.Controls.Add(this.isAdmin2);
-            this.EditDataPanel.Controls.Add(this.label7);
-            this.EditDataPanel.Controls.Add(this.FN2);
-            this.EditDataPanel.Controls.Add(this.label8);
-            this.EditDataPanel.Controls.Add(this.label9);
-            this.EditDataPanel.Controls.Add(this.ApplyChanges);
-            this.EditDataPanel.Controls.Add(this.LN2);
-            this.EditDataPanel.Controls.Add(this.label10);
-            this.EditDataPanel.Controls.Add(this.PW2);
-            this.EditDataPanel.Controls.Add(this.UN2);
-            this.EditDataPanel.Controls.Add(this.label6);
-            this.EditDataPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EditDataPanel.Location = new System.Drawing.Point(0, 0);
-            this.EditDataPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.EditDataPanel.Name = "EditDataPanel";
-            this.EditDataPanel.Size = new System.Drawing.Size(751, 415);
-            this.EditDataPanel.TabIndex = 14;
-            // 
-            // isAdmin2
-            // 
-            this.isAdmin2.AutoSize = true;
-            this.isAdmin2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.isAdmin2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.isAdmin2.Location = new System.Drawing.Point(43, 271);
-            this.isAdmin2.Name = "isAdmin2";
-            this.isAdmin2.Size = new System.Drawing.Size(101, 29);
-            this.isAdmin2.TabIndex = 5;
-            this.isAdmin2.Text = "Admin?";
-            this.isAdmin2.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label7.Location = new System.Drawing.Point(35, 82);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(112, 25);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "First Name:";
-            // 
-            // FN2
-            // 
-            this.FN2.Location = new System.Drawing.Point(142, 88);
-            this.FN2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.FN2.Name = "FN2";
-            this.FN2.Size = new System.Drawing.Size(160, 24);
-            this.FN2.TabIndex = 1;
-            this.FN2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FN2_KeyDown);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label8.Location = new System.Drawing.Point(34, 129);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(112, 25);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "Last Name:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label9.Location = new System.Drawing.Point(34, 177);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(116, 25);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "User Name:";
-            // 
-            // ApplyChanges
-            // 
-            this.ApplyChanges.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.ApplyChanges.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ApplyChanges.BackgroundImage")));
-            this.ApplyChanges.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ApplyChanges.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ApplyChanges.FlatAppearance.BorderSize = 0;
-            this.ApplyChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ApplyChanges.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ApplyChanges.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ApplyChanges.Location = new System.Drawing.Point(74, 308);
-            this.ApplyChanges.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ApplyChanges.Name = "ApplyChanges";
-            this.ApplyChanges.Size = new System.Drawing.Size(228, 64);
-            this.ApplyChanges.TabIndex = 6;
-            this.ApplyChanges.Text = "            Apply Changes";
-            this.ApplyChanges.UseVisualStyleBackColor = false;
-            this.ApplyChanges.Click += new System.EventHandler(this.ApplyChanges_Click);
-            // 
-            // LN2
-            // 
-            this.LN2.Location = new System.Drawing.Point(142, 132);
-            this.LN2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.LN2.Name = "LN2";
-            this.LN2.Size = new System.Drawing.Size(160, 24);
-            this.LN2.TabIndex = 2;
-            this.LN2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FN2_KeyDown);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label10.Location = new System.Drawing.Point(34, 224);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(104, 25);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Password:";
-            // 
-            // PW2
-            // 
-            this.PW2.Location = new System.Drawing.Point(142, 224);
-            this.PW2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.PW2.Name = "PW2";
-            this.PW2.PasswordChar = '*';
-            this.PW2.Size = new System.Drawing.Size(160, 24);
-            this.PW2.TabIndex = 4;
-            this.PW2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FN2_KeyDown);
-            // 
-            // UN2
-            // 
-            this.UN2.Location = new System.Drawing.Point(142, 179);
-            this.UN2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.UN2.Name = "UN2";
-            this.UN2.ReadOnly = true;
-            this.UN2.Size = new System.Drawing.Size(160, 24);
-            this.UN2.TabIndex = 3;
-            this.UN2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FN2_KeyDown);
-            // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label6.Location = new System.Drawing.Point(279, 15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(236, 39);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Edit Your Info";
-            // 
-            // QuickReportPanel
-            // 
-            this.QuickReportPanel.Controls.Add(this.button5);
-            this.QuickReportPanel.Controls.Add(this.label29);
-            this.QuickReportPanel.Controls.Add(this.ReportText);
-            this.QuickReportPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.QuickReportPanel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.QuickReportPanel.Location = new System.Drawing.Point(0, 0);
-            this.QuickReportPanel.Name = "QuickReportPanel";
-            this.QuickReportPanel.Size = new System.Drawing.Size(751, 415);
-            this.QuickReportPanel.TabIndex = 18;
-            // 
-            // button5
-            // 
-            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(18, 19);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(225, 40);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "    View SQL Statements";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // label29
-            // 
-            this.label29.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label29.Location = new System.Drawing.Point(306, 13);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(227, 39);
-            this.label29.TabIndex = 0;
-            this.label29.Text = "Quick Report";
-            // 
-            // ReportText
-            // 
-            this.ReportText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ReportText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ReportText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReportText.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ReportText.Location = new System.Drawing.Point(18, 69);
-            this.ReportText.Multiline = true;
-            this.ReportText.Name = "ReportText";
-            this.ReportText.ReadOnly = true;
-            this.ReportText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ReportText.Size = new System.Drawing.Size(721, 324);
-            this.ReportText.TabIndex = 1;
             // 
             // AddRentingPanel
             // 
@@ -2235,49 +2020,58 @@
             this.dataGridView4.AutoGenerateColumns = false;
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.gNAMEDataGridViewTextBoxColumn2,
-            this.cATEGORYDataGridViewTextBoxColumn1,
-            this.rENTPRICEPERDAYDataGridViewTextBoxColumn1});
-            this.dataGridView4.DataSource = this.gAMEBindingSource1;
+            this.gNAMEDataGridViewTextBoxColumn,
+            this.cATEGORYDataGridViewTextBoxColumn,
+            this.rENTPRICEPERDAYDataGridViewTextBoxColumn,
+            this.vENDORNAMEDataGridViewTextBoxColumn,
+            this.rELEASEDATEDataGridViewTextBoxColumn});
+            this.dataGridView4.DataSource = this.gAMEBindingSource;
             this.dataGridView4.Location = new System.Drawing.Point(38, 69);
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.ReadOnly = true;
-            this.dataGridView4.RowHeadersWidth = 51;
             this.dataGridView4.Size = new System.Drawing.Size(347, 324);
             this.dataGridView4.TabIndex = 7;
             this.dataGridView4.SelectionChanged += new System.EventHandler(this.dataGridView4_SelectionChanged);
             // 
-            // gNAMEDataGridViewTextBoxColumn2
+            // gNAMEDataGridViewTextBoxColumn
             // 
-            this.gNAMEDataGridViewTextBoxColumn2.DataPropertyName = "GNAME";
-            this.gNAMEDataGridViewTextBoxColumn2.HeaderText = "GNAME";
-            this.gNAMEDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.gNAMEDataGridViewTextBoxColumn2.Name = "gNAMEDataGridViewTextBoxColumn2";
-            this.gNAMEDataGridViewTextBoxColumn2.ReadOnly = true;
-            this.gNAMEDataGridViewTextBoxColumn2.Width = 125;
+            this.gNAMEDataGridViewTextBoxColumn.DataPropertyName = "GNAME";
+            this.gNAMEDataGridViewTextBoxColumn.HeaderText = "GNAME";
+            this.gNAMEDataGridViewTextBoxColumn.Name = "gNAMEDataGridViewTextBoxColumn";
+            this.gNAMEDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // cATEGORYDataGridViewTextBoxColumn1
+            // cATEGORYDataGridViewTextBoxColumn
             // 
-            this.cATEGORYDataGridViewTextBoxColumn1.DataPropertyName = "CATEGORY";
-            this.cATEGORYDataGridViewTextBoxColumn1.HeaderText = "CATEGORY";
-            this.cATEGORYDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.cATEGORYDataGridViewTextBoxColumn1.Name = "cATEGORYDataGridViewTextBoxColumn1";
-            this.cATEGORYDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.cATEGORYDataGridViewTextBoxColumn1.Width = 125;
+            this.cATEGORYDataGridViewTextBoxColumn.DataPropertyName = "CATEGORY";
+            this.cATEGORYDataGridViewTextBoxColumn.HeaderText = "CATEGORY";
+            this.cATEGORYDataGridViewTextBoxColumn.Name = "cATEGORYDataGridViewTextBoxColumn";
+            this.cATEGORYDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // rENTPRICEPERDAYDataGridViewTextBoxColumn1
+            // rENTPRICEPERDAYDataGridViewTextBoxColumn
             // 
-            this.rENTPRICEPERDAYDataGridViewTextBoxColumn1.DataPropertyName = "RENT_PRICE_PER_DAY";
-            this.rENTPRICEPERDAYDataGridViewTextBoxColumn1.HeaderText = "RENT_PRICE_PER_DAY";
-            this.rENTPRICEPERDAYDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.rENTPRICEPERDAYDataGridViewTextBoxColumn1.Name = "rENTPRICEPERDAYDataGridViewTextBoxColumn1";
-            this.rENTPRICEPERDAYDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.rENTPRICEPERDAYDataGridViewTextBoxColumn1.Width = 125;
+            this.rENTPRICEPERDAYDataGridViewTextBoxColumn.DataPropertyName = "RENT_PRICE_PER_DAY";
+            this.rENTPRICEPERDAYDataGridViewTextBoxColumn.HeaderText = "RENT_PRICE_PER_DAY";
+            this.rENTPRICEPERDAYDataGridViewTextBoxColumn.Name = "rENTPRICEPERDAYDataGridViewTextBoxColumn";
+            this.rENTPRICEPERDAYDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // gAMEBindingSource1
+            // vENDORNAMEDataGridViewTextBoxColumn
             // 
-            this.gAMEBindingSource1.DataMember = "GAME";
-            this.gAMEBindingSource1.DataSource = this.gameRentalDataSet;
+            this.vENDORNAMEDataGridViewTextBoxColumn.DataPropertyName = "VENDORNAME";
+            this.vENDORNAMEDataGridViewTextBoxColumn.HeaderText = "VENDORNAME";
+            this.vENDORNAMEDataGridViewTextBoxColumn.Name = "vENDORNAMEDataGridViewTextBoxColumn";
+            this.vENDORNAMEDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // rELEASEDATEDataGridViewTextBoxColumn
+            // 
+            this.rELEASEDATEDataGridViewTextBoxColumn.DataPropertyName = "RELEASEDATE";
+            this.rELEASEDATEDataGridViewTextBoxColumn.HeaderText = "RELEASEDATE";
+            this.rELEASEDATEDataGridViewTextBoxColumn.Name = "rELEASEDATEDataGridViewTextBoxColumn";
+            this.rELEASEDATEDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // gAMEBindingSource
+            // 
+            this.gAMEBindingSource.DataMember = "GAME";
+            this.gAMEBindingSource.DataSource = this.gameRentalDataSet;
             // 
             // label25
             // 
@@ -2286,7 +2080,7 @@
             this.label25.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label25.Location = new System.Drawing.Point(478, 133);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(196, 36);
+            this.label25.Size = new System.Drawing.Size(165, 29);
             this.label25.TabIndex = 2;
             this.label25.Text = "Game Name:";
             // 
@@ -2295,7 +2089,7 @@
             this.NewRentGameSearch.Location = new System.Drawing.Point(480, 179);
             this.NewRentGameSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NewRentGameSearch.Name = "NewRentGameSearch";
-            this.NewRentGameSearch.Size = new System.Drawing.Size(163, 24);
+            this.NewRentGameSearch.Size = new System.Drawing.Size(163, 21);
             this.NewRentGameSearch.TabIndex = 1;
             // 
             // button6
@@ -2326,7 +2120,7 @@
             this.label30.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label30.Location = new System.Drawing.Point(281, 15);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(233, 39);
+            this.label30.Size = new System.Drawing.Size(188, 31);
             this.label30.TabIndex = 2;
             this.label30.Text = "Rent A Game";
             // 
@@ -2356,7 +2150,7 @@
             this.gDateReleased.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.gDateReleased.Location = new System.Drawing.Point(222, 270);
             this.gDateReleased.Name = "gDateReleased";
-            this.gDateReleased.Size = new System.Drawing.Size(208, 24);
+            this.gDateReleased.Size = new System.Drawing.Size(208, 21);
             this.gDateReleased.TabIndex = 6;
             // 
             // label11
@@ -2367,7 +2161,7 @@
             this.label11.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label11.Location = new System.Drawing.Point(267, 15);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(269, 39);
+            this.label11.Size = new System.Drawing.Size(216, 31);
             this.label11.TabIndex = 2;
             this.label11.Text = "Add New Game";
             // 
@@ -2378,7 +2172,7 @@
             this.label12.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label12.Location = new System.Drawing.Point(35, 82);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(128, 25);
+            this.label12.Size = new System.Drawing.Size(103, 20);
             this.label12.TabIndex = 2;
             this.label12.Text = "Game Name:";
             // 
@@ -2387,7 +2181,7 @@
             this.gName.Location = new System.Drawing.Point(222, 88);
             this.gName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gName.Name = "gName";
-            this.gName.Size = new System.Drawing.Size(208, 24);
+            this.gName.Size = new System.Drawing.Size(208, 21);
             this.gName.TabIndex = 1;
             this.gName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gName_KeyDown);
             // 
@@ -2398,7 +2192,7 @@
             this.label13.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label13.Location = new System.Drawing.Point(34, 129);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(98, 25);
+            this.label13.Size = new System.Drawing.Size(77, 20);
             this.label13.TabIndex = 2;
             this.label13.Text = "Category:";
             // 
@@ -2409,7 +2203,7 @@
             this.label14.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label14.Location = new System.Drawing.Point(34, 177);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(178, 25);
+            this.label14.Size = new System.Drawing.Size(145, 20);
             this.label14.TabIndex = 2;
             this.label14.Text = "Rent price per Day:";
             // 
@@ -2437,7 +2231,7 @@
             this.gCat.Location = new System.Drawing.Point(222, 132);
             this.gCat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gCat.Name = "gCat";
-            this.gCat.Size = new System.Drawing.Size(208, 24);
+            this.gCat.Size = new System.Drawing.Size(208, 21);
             this.gCat.TabIndex = 2;
             this.gCat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gName_KeyDown);
             // 
@@ -2448,7 +2242,7 @@
             this.label16.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label16.Location = new System.Drawing.Point(34, 266);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(146, 25);
+            this.label16.Size = new System.Drawing.Size(120, 20);
             this.label16.TabIndex = 2;
             this.label16.Text = "Date Released:";
             // 
@@ -2459,7 +2253,7 @@
             this.label15.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label15.Location = new System.Drawing.Point(34, 224);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(82, 25);
+            this.label15.Size = new System.Drawing.Size(65, 20);
             this.label15.TabIndex = 2;
             this.label15.Text = "Vendor:";
             // 
@@ -2468,7 +2262,7 @@
             this.gVen.Location = new System.Drawing.Point(222, 224);
             this.gVen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gVen.Name = "gVen";
-            this.gVen.Size = new System.Drawing.Size(208, 24);
+            this.gVen.Size = new System.Drawing.Size(208, 21);
             this.gVen.TabIndex = 4;
             this.gVen.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gName_KeyDown);
             // 
@@ -2477,7 +2271,7 @@
             this.gRent.Location = new System.Drawing.Point(222, 179);
             this.gRent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gRent.Name = "gRent";
-            this.gRent.Size = new System.Drawing.Size(208, 24);
+            this.gRent.Size = new System.Drawing.Size(208, 21);
             this.gRent.TabIndex = 3;
             this.gRent.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gName_KeyDown);
             // 
@@ -2508,7 +2302,7 @@
             this.GameDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.GameDate.Location = new System.Drawing.Point(154, 266);
             this.GameDate.Name = "GameDate";
-            this.GameDate.Size = new System.Drawing.Size(160, 24);
+            this.GameDate.Size = new System.Drawing.Size(160, 21);
             this.GameDate.TabIndex = 7;
             this.GameDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameName_KeyDown);
             // 
@@ -2529,7 +2323,7 @@
             this.label17.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label17.Location = new System.Drawing.Point(34, 89);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(128, 25);
+            this.label17.Size = new System.Drawing.Size(103, 20);
             this.label17.TabIndex = 2;
             this.label17.Text = "Game Name:";
             // 
@@ -2538,7 +2332,7 @@
             this.GameName.Location = new System.Drawing.Point(154, 88);
             this.GameName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GameName.Name = "GameName";
-            this.GameName.Size = new System.Drawing.Size(160, 24);
+            this.GameName.Size = new System.Drawing.Size(160, 21);
             this.GameName.TabIndex = 1;
             this.GameName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameName_KeyDown);
             // 
@@ -2549,7 +2343,7 @@
             this.label18.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label18.Location = new System.Drawing.Point(34, 133);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(98, 25);
+            this.label18.Size = new System.Drawing.Size(77, 20);
             this.label18.TabIndex = 2;
             this.label18.Text = "Category:";
             // 
@@ -2560,7 +2354,7 @@
             this.label19.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label19.Location = new System.Drawing.Point(35, 174);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(107, 25);
+            this.label19.Size = new System.Drawing.Size(87, 20);
             this.label19.TabIndex = 2;
             this.label19.Text = "Rent Price:";
             // 
@@ -2588,7 +2382,7 @@
             this.GameCategory.Location = new System.Drawing.Point(154, 132);
             this.GameCategory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GameCategory.Name = "GameCategory";
-            this.GameCategory.Size = new System.Drawing.Size(160, 24);
+            this.GameCategory.Size = new System.Drawing.Size(160, 21);
             this.GameCategory.TabIndex = 2;
             this.GameCategory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameName_KeyDown);
             // 
@@ -2599,7 +2393,7 @@
             this.label22.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label22.Location = new System.Drawing.Point(34, 263);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(135, 25);
+            this.label22.Size = new System.Drawing.Size(111, 20);
             this.label22.TabIndex = 2;
             this.label22.Text = "Release Date:";
             // 
@@ -2610,7 +2404,7 @@
             this.label20.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label20.Location = new System.Drawing.Point(34, 219);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(82, 25);
+            this.label20.Size = new System.Drawing.Size(65, 20);
             this.label20.TabIndex = 2;
             this.label20.Text = "Vendor:";
             // 
@@ -2619,7 +2413,7 @@
             this.GameVendor.Location = new System.Drawing.Point(154, 219);
             this.GameVendor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GameVendor.Name = "GameVendor";
-            this.GameVendor.Size = new System.Drawing.Size(160, 24);
+            this.GameVendor.Size = new System.Drawing.Size(160, 21);
             this.GameVendor.TabIndex = 4;
             this.GameVendor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameName_KeyDown);
             // 
@@ -2628,7 +2422,7 @@
             this.GamePrice.Location = new System.Drawing.Point(154, 174);
             this.GamePrice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.GamePrice.Name = "GamePrice";
-            this.GamePrice.Size = new System.Drawing.Size(160, 24);
+            this.GamePrice.Size = new System.Drawing.Size(160, 21);
             this.GamePrice.TabIndex = 3;
             this.GamePrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameName_KeyDown);
             // 
@@ -2640,25 +2434,232 @@
             this.label21.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label21.Location = new System.Drawing.Point(279, 15);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(257, 39);
+            this.label21.Size = new System.Drawing.Size(208, 31);
             this.label21.TabIndex = 2;
             this.label21.Text = "Edit Game Info";
             // 
-            // cLIENTTableAdapter
+            // EditDataPanel
             // 
-            this.cLIENTTableAdapter.ClearBeforeFill = true;
+            this.EditDataPanel.Controls.Add(this.isAdmin2);
+            this.EditDataPanel.Controls.Add(this.label7);
+            this.EditDataPanel.Controls.Add(this.FN2);
+            this.EditDataPanel.Controls.Add(this.label8);
+            this.EditDataPanel.Controls.Add(this.label9);
+            this.EditDataPanel.Controls.Add(this.ApplyChanges);
+            this.EditDataPanel.Controls.Add(this.LN2);
+            this.EditDataPanel.Controls.Add(this.label10);
+            this.EditDataPanel.Controls.Add(this.PW2);
+            this.EditDataPanel.Controls.Add(this.UN2);
+            this.EditDataPanel.Controls.Add(this.label6);
+            this.EditDataPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.EditDataPanel.Location = new System.Drawing.Point(0, 0);
+            this.EditDataPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.EditDataPanel.Name = "EditDataPanel";
+            this.EditDataPanel.Size = new System.Drawing.Size(751, 415);
+            this.EditDataPanel.TabIndex = 14;
+            // 
+            // isAdmin2
+            // 
+            this.isAdmin2.AutoSize = true;
+            this.isAdmin2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.isAdmin2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.isAdmin2.Location = new System.Drawing.Point(43, 271);
+            this.isAdmin2.Name = "isAdmin2";
+            this.isAdmin2.Size = new System.Drawing.Size(82, 24);
+            this.isAdmin2.TabIndex = 5;
+            this.isAdmin2.Text = "Admin?";
+            this.isAdmin2.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label7.Location = new System.Drawing.Point(35, 82);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(90, 20);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "First Name:";
+            // 
+            // FN2
+            // 
+            this.FN2.Location = new System.Drawing.Point(142, 88);
+            this.FN2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.FN2.Name = "FN2";
+            this.FN2.Size = new System.Drawing.Size(160, 21);
+            this.FN2.TabIndex = 1;
+            this.FN2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FN2_KeyDown);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label8.Location = new System.Drawing.Point(34, 129);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(90, 20);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Last Name:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label9.Location = new System.Drawing.Point(34, 177);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(93, 20);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "User Name:";
+            // 
+            // ApplyChanges
+            // 
+            this.ApplyChanges.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.ApplyChanges.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ApplyChanges.BackgroundImage")));
+            this.ApplyChanges.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ApplyChanges.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ApplyChanges.FlatAppearance.BorderSize = 0;
+            this.ApplyChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ApplyChanges.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ApplyChanges.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.ApplyChanges.Location = new System.Drawing.Point(74, 308);
+            this.ApplyChanges.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ApplyChanges.Name = "ApplyChanges";
+            this.ApplyChanges.Size = new System.Drawing.Size(228, 64);
+            this.ApplyChanges.TabIndex = 6;
+            this.ApplyChanges.Text = "            Apply Changes";
+            this.ApplyChanges.UseVisualStyleBackColor = false;
+            this.ApplyChanges.Click += new System.EventHandler(this.ApplyChanges_Click);
+            // 
+            // LN2
+            // 
+            this.LN2.Location = new System.Drawing.Point(142, 132);
+            this.LN2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.LN2.Name = "LN2";
+            this.LN2.Size = new System.Drawing.Size(160, 21);
+            this.LN2.TabIndex = 2;
+            this.LN2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FN2_KeyDown);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label10.Location = new System.Drawing.Point(34, 224);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(82, 20);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Password:";
+            // 
+            // PW2
+            // 
+            this.PW2.Location = new System.Drawing.Point(142, 224);
+            this.PW2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.PW2.Name = "PW2";
+            this.PW2.PasswordChar = '*';
+            this.PW2.Size = new System.Drawing.Size(160, 21);
+            this.PW2.TabIndex = 4;
+            this.PW2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FN2_KeyDown);
+            // 
+            // UN2
+            // 
+            this.UN2.Location = new System.Drawing.Point(142, 179);
+            this.UN2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.UN2.Name = "UN2";
+            this.UN2.ReadOnly = true;
+            this.UN2.Size = new System.Drawing.Size(160, 21);
+            this.UN2.TabIndex = 3;
+            this.UN2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FN2_KeyDown);
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label6.Location = new System.Drawing.Point(279, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(192, 31);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Edit Your Info";
+            // 
+            // QuickReportPanel
+            // 
+            this.QuickReportPanel.Controls.Add(this.button5);
+            this.QuickReportPanel.Controls.Add(this.ReportText);
+            this.QuickReportPanel.Controls.Add(this.label29);
+            this.QuickReportPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.QuickReportPanel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.QuickReportPanel.Location = new System.Drawing.Point(0, 0);
+            this.QuickReportPanel.Name = "QuickReportPanel";
+            this.QuickReportPanel.Size = new System.Drawing.Size(751, 415);
+            this.QuickReportPanel.TabIndex = 18;
+            // 
+            // button5
+            // 
+            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(18, 19);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(225, 40);
+            this.button5.TabIndex = 2;
+            this.button5.Text = "    View SQL Statements";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // ReportText
+            // 
+            this.ReportText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReportText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ReportText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReportText.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.ReportText.Location = new System.Drawing.Point(18, 69);
+            this.ReportText.Multiline = true;
+            this.ReportText.Name = "ReportText";
+            this.ReportText.ReadOnly = true;
+            this.ReportText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.ReportText.Size = new System.Drawing.Size(721, 324);
+            this.ReportText.TabIndex = 1;
+            // 
+            // label29
+            // 
+            this.label29.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label29.Location = new System.Drawing.Point(306, 13);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(185, 31);
+            this.label29.TabIndex = 0;
+            this.label29.Text = "Quick Report";
             // 
             // gAMETableAdapter
             // 
             this.gAMETableAdapter.ClearBeforeFill = true;
             // 
+            // cLIENTTableAdapter
+            // 
+            this.cLIENTTableAdapter.ClearBeforeFill = true;
+            // 
             // rENTTableAdapter
             // 
             this.rENTTableAdapter.ClearBeforeFill = true;
             // 
+            // bunifuDragControl1
+            // 
+            this.bunifuDragControl1.Fixed = true;
+            this.bunifuDragControl1.Horizontal = true;
+            this.bunifuDragControl1.TargetControl = this.TitleBar;
+            this.bunifuDragControl1.Vertical = true;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(908, 502);
@@ -2687,12 +2688,11 @@
             this.GamesPanel.ResumeLayout(false);
             this.GamesPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gAMEBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gameRentalDataSet)).EndInit();
             this.RentsPanel.ResumeLayout(false);
             this.RentsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rENTBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gameRentalDataSet)).EndInit();
             this.AboutUSPanel.ResumeLayout(false);
             this.AboutUSPanel.PerformLayout();
             this.usersPanel.ResumeLayout(false);
@@ -2706,18 +2706,18 @@
             this.FeaturesPanel.ResumeLayout(false);
             this.ContentPannel.ResumeLayout(false);
             this.ContentPannel.PerformLayout();
-            this.EditDataPanel.ResumeLayout(false);
-            this.EditDataPanel.PerformLayout();
-            this.QuickReportPanel.ResumeLayout(false);
-            this.QuickReportPanel.PerformLayout();
             this.AddRentingPanel.ResumeLayout(false);
             this.AddRentingPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gAMEBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gAMEBindingSource)).EndInit();
             this.NewGamePanel.ResumeLayout(false);
             this.NewGamePanel.PerformLayout();
             this.EditGamePanel.ResumeLayout(false);
             this.EditGamePanel.PerformLayout();
+            this.EditDataPanel.ResumeLayout(false);
+            this.EditDataPanel.PerformLayout();
+            this.QuickReportPanel.ResumeLayout(false);
+            this.QuickReportPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2825,21 +2825,8 @@
         private System.Windows.Forms.TextBox gRent;
         private System.Windows.Forms.DateTimePicker gDateReleased;
         private System.Windows.Forms.Label label16;
-        private gameRental gameRentalDataSet;
-        private System.Windows.Forms.BindingSource cLIENTBindingSource;
-        private gameRentalDataSetTableAdapters.CLIENTTableAdapter cLIENTTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fNAMEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lNAMEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn aDMINDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.BindingSource gAMEBindingSource;
-        private gameRentalDataSetTableAdapters.GAMETableAdapter gAMETableAdapter;
         private System.Windows.Forms.ComboBox GamesFilters;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gNAMEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cATEGORYDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rENTPRICEPERDAYDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vENDORNAMEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rELEASEDATEDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button SearchGameBtn;
         private System.Windows.Forms.TextBox gameSearchBx1;
         private System.Windows.Forms.Label And;
@@ -2867,13 +2854,6 @@
         private System.Windows.Forms.Button DeleteGame;
         private System.Windows.Forms.TextBox GameToDelete;
         private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.BindingSource rENTBindingSource;
-        private gameRentalDataSetTableAdapters.RENTTableAdapter rENTTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gNAMEDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn uSERNAMEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dATEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn iSRETURNEDDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rETURNDATEDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.DateTimePicker RentsDateTo;
         private System.Windows.Forms.DateTimePicker RentsDateFrom;
@@ -2890,10 +2870,6 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.DataGridView dataGridView4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gNAMEDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cATEGORYDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rENTPRICEPERDAYDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.BindingSource gAMEBindingSource1;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
@@ -2914,6 +2890,30 @@
         private System.Windows.Forms.ComboBox UserSearchOption;
         private System.Windows.Forms.RadioButton NotAdmins;
         private System.Windows.Forms.RadioButton AllAdmins;
+        private GameRentalDataSet gameRentalDataSet;
+        private System.Windows.Forms.BindingSource gAMEBindingSource;
+        private GameRentalDataSetTableAdapters.GAMETableAdapter gAMETableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gNAMEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cATEGORYDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rENTPRICEPERDAYDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vENDORNAMEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rELEASEDATEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource cLIENTBindingSource;
+        private GameRentalDataSetTableAdapters.CLIENTTableAdapter cLIENTTableAdapter;
+        private System.Windows.Forms.BindingSource rENTBindingSource;
+        private GameRentalDataSetTableAdapters.RENTTableAdapter rENTTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gNAMEDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uSERNAMEDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dATEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn iSRETURNEDDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rETURNDATEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fNAMEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lNAMEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn aDMINDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.Button AddGamebtn2;
+        private System.Windows.Forms.Button AddUserbtn2;
+        private System.Windows.Forms.Button AddRentingbtn2;
+        private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
     }
 }
 

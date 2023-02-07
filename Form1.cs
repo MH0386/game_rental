@@ -1,32 +1,71 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace GameRental
 {
     public partial class Form1 : Form
     {
+        //Minimize from taskbar
+        const int WS_MINIMIZEBOX = 0x20000;
+        const int CS_DBLCLKS = 0x8;
+
+        ////Moving by Drag
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HTCAPTION = 0x2;
+
+        string ConString =
+            "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\GameRental.mdf;Integrated Security=True";
+
+        string FirstName;
+        string LastName;
+        string pw;
+
+        string UN;
+
         public Form1()
         {
             InitializeComponent();
+            this.SetStyle(ControlStyles.ResizeRedraw, true); // this is to avoid visual artifacts
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.Style |= WS_MINIMIZEBOX;
+                cp.ClassStyle |= CS_DBLCLKS;
+                return cp;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'gameRentalDataSet.RENT' table. You can move, or remove it, as needed.
-            rENTTableAdapter.Fill(gameRentalDataSet.RENT);
-            // TODO: This line of code loads data into the 'gameRentalDataSet.GAME' table. You can move, or remove it, as needed.
-            gAMETableAdapter.Fill(gameRentalDataSet.GAME);
+            this.rENTTableAdapter.Fill(this.gameRentalDataSet.RENT);
             // TODO: This line of code loads data into the 'gameRentalDataSet.CLIENT' table. You can move, or remove it, as needed.
-            cLIENTTableAdapter.Fill(gameRentalDataSet.CLIENT);
-            ActiveControl = logInUserName;
+            this.cLIENTTableAdapter.Fill(this.gameRentalDataSet.CLIENT);
+            // TODO: This line of code loads data into the 'gameRentalDataSet.GAME' table. You can move, or remove it, as needed.
+            this.gAMETableAdapter.Fill(this.gameRentalDataSet.GAME);
+
+
+            this.ActiveControl = logInUserName;
             NavBar.Hide();
             expandBtn.Hide();
         }
-        
+
+
         private void addUser_Click(object sender, EventArgs e)
         {
             if (FName.Text == "")
@@ -60,13 +99,16 @@ namespace GameRental
             }
 
 
-            SqlConnection sConnetion = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+            SqlConnection sConnetion = new SqlConnection(ConString);
             SqlCommand sCommand = new SqlCommand();
             sCommand.Connection = sConnetion;
 
             sConnetion.Open();
 
-            sCommand.CommandText = $"INSERT INTO CLIENT(FNAME, LNAME, USERNAME, PASSWORD, ADMIN) VALUES('{FName.Text}', ' {LName.Text} ', ' {userName.Text} ', ' {Password.Text} ',  {(isAdmin.Checked ? "1" : "0")} )";
+            sCommand.CommandText = $"INSERT INTO CLIENT(FNAME, LNAME, USERNAME, PASSWORD, ADMIN) VALUES('" +
+                                   FName.Text + "', '" + LName.Text + "', '" + userName.Text + "', '" + Password.Text +
+                                   "', " +
+                                   (isAdmin.Checked ? "1" : "0") + ")";
 
             int success;
 
@@ -84,57 +126,52 @@ namespace GameRental
 
             sConnetion.Close();
 
-            if (Authority2.Text == @"Unknown")
+            if (Authority2.Text == "Unkown")
             {
                 LogInPanel.BringToFront();
                 LogInPanel.Show();
-                ActiveControl = logInUserName;
+                this.ActiveControl = logInUserName;
             }
 
             addUserPanel.SendToBack();
         }
 
-        private string _username;
-        private string _password;
-        private string _firstName;
-        private string _lastName;
-
-        private void CheckUser()
+        public void checkUser()
         {
-            _username = logInUserName.Text;
-            _password = logInPassword.Text;
+            UN = logInUserName.Text;
+            pw = logInPassword.Text;
 
-            if (_username.Length > 0 && _password.Length > 0)
+            if (UN.Length > 0 && pw.Length > 0)
             {
-                SqlConnection sConnetion = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+                SqlConnection sConnetion = new SqlConnection(ConString);
                 SqlCommand sCommand = new SqlCommand();
                 sCommand.Connection = sConnetion;
 
                 sConnetion.Open();
 
 
-                sCommand.CommandText =
-                    $"SELECT PASSWORD, ADMIN, FName, LName FROM CLIENT WHERE USERNAME = '{_username}'";
+                sCommand.CommandText = "SELECT PASSWORD, ADMIN, FName, LName FROM CLIENT WHERE USERNAME = '" + UN + "'";
 
-                SqlDataReader sReader = sCommand.ExecuteReader();
+                SqlDataReader sReader;
+                sReader = sCommand.ExecuteReader();
 
                 if (sReader.Read())
                 {
                     string psd = sReader["PASSWORD"].ToString();
                     string isAdmin = sReader["ADMIN"].ToString();
-                    _firstName = sReader["FName"].ToString();
-                    _lastName = sReader["LName"].ToString();
+                    FirstName = sReader["FName"].ToString();
+                    LastName = sReader["LName"].ToString();
 
                     sConnetion.Close();
 
-                    if (_password == psd)
+                    if (pw == psd)
                     {
                         LogInPanel.Hide();
                         Back.Hide();
                         Authority2.Text = (isAdmin == "True" ? "Admin" : "Client");
                         currentUserAuthority.Text = Authority2.Text;
 
-                        currentUserName2.Text = $@"{_firstName} {_lastName}";
+                        currentUserName2.Text = FirstName + ' ' + LastName;
                         currentUserName.Text = currentUserName2.Text;
 
                         logInUserName.Text = "";
@@ -142,10 +179,10 @@ namespace GameRental
 
                         NavBar.Show();
                         expandBtn.Show();
-                        if (Authority2.Text == @"Admin")
+                        if (Authority2.Text == "Admin")
                         {
                             sCommand = new SqlCommand("SELECT * FROM CLIENT");
-                            SqlConnection sConnection = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+                            SqlConnection sConnection = new SqlConnection(ConString);
                             sCommand.Connection = sConnection;
                             SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
                             DataTable dt = new DataTable();
@@ -177,39 +214,63 @@ namespace GameRental
                             DeleteGame.Visible = true;
                             button2.Visible = true;
 
+                            UserSearchBtn.Visible = true;
+                            UserSearchOption.Visible = true;
+
+                            AddGamebtn2.Visible = true;
+
+                            AddRentingbtn2.Visible = false;
+
                             return;
                         }
+                        else
+                        {
+                            sCommand = new SqlCommand("SELECT * FROM CLIENT WHERE USERNAME = '" + UN + "'");
+                            SqlConnection sConnection = new SqlConnection(ConString);
+                            sCommand.Connection = sConnection;
+                            SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
+                            DataTable dt = new DataTable();
+                            sDataAdapter.Fill(dt);
+                            dataGridView1.DataSource = dt;
 
-                        AddNewGame.Hide();
-                        AddRenting.Show();
-                        AddNewUser.Width = 318;
-                        AddNewUser.Location = new Point(9, 3);
+                            AddNewGame.Hide();
+                            AddRenting.Show();
+                            AddNewUser.Width = 318;
+                            AddNewUser.Location = new Point(9, 3);
 
-                        AddRenting.Width = 318;
-                        AddRenting.Location = new Point(330, 3);
+                            AddRenting.Width = 318;
+                            AddRenting.Location = new Point(330, 3);
 
-                        dataGridView1.AllowUserToAddRows = false;
-                        dataGridView1.AllowUserToDeleteRows = false;
-                        dataGridView1.ReadOnly = true;
+                            dataGridView1.AllowUserToAddRows = false;
+                            dataGridView1.AllowUserToDeleteRows = false;
+                            dataGridView1.ReadOnly = true;
 
-                        dataGridView2.AllowUserToAddRows = false;
-                        dataGridView2.AllowUserToDeleteRows = false;
-                        dataGridView2.ReadOnly = true;
+                            dataGridView2.AllowUserToAddRows = false;
+                            dataGridView2.AllowUserToDeleteRows = false;
+                            dataGridView2.ReadOnly = true;
 
-                        DeleteGame.Visible = false;
+                            DeleteGame.Visible = false;
 
-                        dataGridView3.AllowUserToAddRows = false;
-                        dataGridView3.AllowUserToDeleteRows = false;
-                        dataGridView3.ReadOnly = true;
+                            dataGridView3.AllowUserToAddRows = false;
+                            dataGridView3.AllowUserToDeleteRows = false;
+                            dataGridView3.ReadOnly = true;
 
-                        DeleteGame.Visible = false;
-                        button2.Visible = false;
+                            DeleteGame.Visible = false;
+                            button2.Visible = false;
 
-                        return;
+                            UserSearchBtn.Visible = false;
+                            UserSearchOption.Visible = false;
+
+                            AddGamebtn2.Visible = false;
+
+                            AddRentingbtn2.Visible = true;
+
+                            return;
+                        }
                     }
                 }
-                MessageBox.Show(@"Wrong User Name or Password", @"Error");
 
+                MessageBox.Show(@"Wrong User Name or Password", @"Error");
             }
             else
             {
@@ -217,14 +278,15 @@ namespace GameRental
             }
         }
 
-        private static bool IsFloatOrInt(string value)
+        public bool isFloatOrInt(string value)
         {
             int intValue;
             float floatValue;
-            return int.TryParse(value, out intValue) || float.TryParse(value, out floatValue);
+
+            return Int32.TryParse(value, out intValue) || float.TryParse(value, out floatValue);
         }
 
-        private void AddGame()
+        public void addGame()
         {
             if (gName.TextLength == 0)
             {
@@ -244,7 +306,7 @@ namespace GameRental
                 return;
             }
 
-            if (!(IsFloatOrInt(gRent.Text)))
+            if (!(isFloatOrInt(gRent.Text)))
             {
                 MessageBox.Show(@"Please Enter a Numeric Value for the Price Of The Game", @"Error");
                 return;
@@ -256,14 +318,16 @@ namespace GameRental
                 return;
             }
 
-            SqlConnection sConnetion = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+            SqlConnection sConnetion = new SqlConnection(ConString);
             SqlCommand sCommand = new SqlCommand();
             sCommand.Connection = sConnetion;
 
             sConnetion.Open();
 
             sCommand.CommandText =
-                $"INSERT INTO GAME (GNAME, CATEGORY, RENT_PRICE_PER_DAY, VENDORNAME, RELEASEDATE) VALUES ('{gName.Text}', '{gCat.Text}', {gRent.Text}, '{gVen.Text}', '{gDateReleased.Text}')";
+                "INSERT INTO GAME (GNAME, CATEGORY, RENT_PRICE_PER_DAY, VENDORNAME, RELEASEDATE) VALUES ('" +
+                gName.Text + "', '" + gCat.Text + "', " + gRent.Text + ", '" + gVen.Text + "', '" + gDateReleased.Text +
+                "')";
 
             try
             {
@@ -289,33 +353,45 @@ namespace GameRental
         private void usersPage_Click(object sender, EventArgs e)
         {
             usersPanel.BringToFront();
-            cLIENTTableAdapter.Fill(gameRentalDataSet.CLIENT);
 
-            if (Authority2.Text != @"Client") return;
-            SqlCommand sCommand = new SqlCommand("SELECT * FROM CLIENT WHERE USERNAME = '" + logInUserName.Text + "'");
-            SqlConnection sConnection = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
-            sCommand.Connection = sConnection;
-
-            SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
-
-            DataTable dt = new DataTable();
-            sDataAdapter.Fill(dt);
-            dataGridView1.DataSource = dt;
-            dataGridView1.ReadOnly = true;
+            if (Authority2.Text == "Client")
+            {
+                SqlCommand sCommand = new SqlCommand("SELECT * FROM CLIENT WHERE USERNAME = '" + UN + "'");
+                SqlConnection sConnection = new SqlConnection(ConString);
+                sCommand.Connection = sConnection;
+                SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
+                DataTable dt = new DataTable();
+                sDataAdapter.Fill(dt);
+                dataGridView1.DataSource = dt;
+            }
         }
 
         private void gamesPage_Click(object sender, EventArgs e)
         {
             GamesPanel.BringToFront();
-            gAMETableAdapter.Fill(gameRentalDataSet.GAME);
+
+            SqlCommand sCommand = new SqlCommand("SELECT * FROM GAME");
+            SqlConnection sConnection = new SqlConnection(ConString);
+            sCommand.Connection = sConnection;
+            sConnection.Open();
+
+            SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
+            //sDataAdapter.Equals(dataGridView2.SelectedRows[0]);
+
+            DataTable dt = new DataTable();
+            sDataAdapter.Fill(dt);
+            dataGridView2.DataSource = dt;
+            dataGridView2.ReadOnly = true;
         }
 
         private void rentsPage_Click(object sender, EventArgs e)
         {
-            SqlCommand sCommand = new SqlCommand("SELECT * FROM RENT");
-            SqlConnection sConnection = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+            SqlCommand sCommand = new SqlCommand("SELECT * FROM RENT WHERE USERNAME = '" + UN + "'");
+            SqlConnection sConnection = new SqlConnection(ConString);
             sCommand.Connection = sConnection;
+
             SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
+
             DataTable dt = new DataTable();
             sDataAdapter.Fill(dt);
             dataGridView3.DataSource = dt;
@@ -334,18 +410,25 @@ namespace GameRental
 
         private void restoreBtn_Click(object sender, EventArgs e)
         {
-            WindowState = WindowState == FormWindowState.Maximized ? FormWindowState.Normal : FormWindowState.Maximized;
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
         }
 
         private void minBtn_Click(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Minimized;
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void AddNewUser_Click(object sender, EventArgs e)
         {
             addUserPanel.BringToFront();
-            ActiveControl = FNameLabel;
+            this.ActiveControl = FNameLabel;
         }
 
         private void expandBtn_Click(object sender, EventArgs e)
@@ -354,11 +437,11 @@ namespace GameRental
             {
                 NavBar.Width = 157;
 
-                homePage.RightToLeft = RightToLeft.Yes;
-                usersPage.RightToLeft = RightToLeft.Yes;
-                gamesPage.RightToLeft = RightToLeft.Yes;
-                rentsPage.RightToLeft = RightToLeft.Yes;
-                aboutPage.RightToLeft = RightToLeft.Yes;
+                homePage.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+                usersPage.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+                gamesPage.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+                rentsPage.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+                aboutPage.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
                 signUp.Visible = true;
                 CurrentUser.Visible = true;
                 currentUserName.Visible = true;
@@ -367,11 +450,11 @@ namespace GameRental
             {
                 NavBar.Width = 65;
 
-                homePage.RightToLeft = RightToLeft.No;
-                usersPage.RightToLeft = RightToLeft.No;
-                gamesPage.RightToLeft = RightToLeft.No;
-                rentsPage.RightToLeft = RightToLeft.No;
-                aboutPage.RightToLeft = RightToLeft.No;
+                homePage.RightToLeft = System.Windows.Forms.RightToLeft.No;
+                usersPage.RightToLeft = System.Windows.Forms.RightToLeft.No;
+                gamesPage.RightToLeft = System.Windows.Forms.RightToLeft.No;
+                rentsPage.RightToLeft = System.Windows.Forms.RightToLeft.No;
+                aboutPage.RightToLeft = System.Windows.Forms.RightToLeft.No;
                 signUp.Visible = false;
                 CurrentUser.Visible = false;
                 currentUserName.Visible = false;
@@ -380,14 +463,14 @@ namespace GameRental
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CheckUser();
+            checkUser();
         }
 
         private void logInUserName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                CheckUser();
+                checkUser();
             }
         }
 
@@ -399,32 +482,37 @@ namespace GameRental
         private void Back_Click(object sender, EventArgs e)
         {
             LogInPanel.BringToFront();
-            ActiveControl = logInUserName;
+            this.ActiveControl = logInUserName;
         }
 
         private void UpdateInfo_Click(object sender, EventArgs e)
         {
-            FN2.Text = _firstName;
-            LN2.Text = _lastName;
-            if (Authority2.Text == @"Admin")
+            FN2.Text = FirstName;
+            LN2.Text = LastName;
+            if (Authority2.Text == "Admin")
             {
                 isAdmin2.Checked = true;
             }
-            UN2.Text = _username;
-            PW2.Text = _password;
+
+            UN2.Text = UN;
+            PW2.Text = pw;
 
             EditDataPanel.BringToFront();
         }
 
-        private void UpdateInformation()
+        public void updateInfo()
         {
-            SqlConnection sConnetion = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+            SqlConnection sConnetion = new SqlConnection(ConString);
             SqlCommand sCommand = new SqlCommand();
             sCommand.Connection = sConnetion;
 
             sConnetion.Open();
 
-            sCommand.CommandText = "UPDATE CLIENT SET FNAME = '" + FN2.Text + "' WHERE USERNAME = '" + _username + "'; UPDATE CLIENT SET LNAME = '" + LN2.Text + "'  WHERE USERNAME = '" + _username + "' ; UPDATE CLIENT SET PASSWORD = '" + PW2.Text + "' WHERE USERNAME = '" + _username + "'; UPDATE CLIENT SET ADMIN = " + (isAdmin2.Checked ? 1 : 0) + " WHERE USERNAME = '" + _username + "';";
+            sCommand.CommandText = "UPDATE CLIENT SET FNAME = '" + FN2.Text + "' WHERE USERNAME = '" + UN +
+                                   "'; UPDATE CLIENT SET LNAME = '" + LN2.Text + "'  WHERE USERNAME = '" + UN +
+                                   "' ; UPDATE CLIENT SET PASSWORD = '" + PW2.Text + "' WHERE USERNAME = '" + UN +
+                                   "'; UPDATE CLIENT SET ADMIN = " + (isAdmin2.Checked ? 1 : 0) +
+                                   " WHERE USERNAME = '" + UN + "';";
 
             try
             {
@@ -448,9 +536,9 @@ namespace GameRental
             sConnetion.Close();
         }
 
-        private void UpdateGameInfo()
+        public void updateGameInfo()
         {
-            SqlConnection sConnetion = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+            SqlConnection sConnetion = new SqlConnection(ConString);
             SqlCommand sCommand = new SqlCommand();
             sCommand.Connection = sConnetion;
 
@@ -458,7 +546,12 @@ namespace GameRental
 
             int numOfRowsAffected;
 
-            sCommand.CommandText = "UPDATE GAME SET CATEGORY = '" + GameCategory.Text + "' WHERE GNAME = '" + GameName.Text + "'; UPDATE GAME SET RENT_PRICE_PER_DAY = '" + GamePrice.Text + "' WHERE GNAME = '" + GameName.Text + "'; UPDATE GAME SET VENDORNAME = '" + GameVendor.Text + "' WHERE GNAME = '" + GameName.Text + "'; UPDATE GAME SET RELEASEDATE = '" + GameDate.Text + "' WHERE GNAME = '" + GameName.Text + "';";
+            sCommand.CommandText = "UPDATE GAME SET CATEGORY = '" + GameCategory.Text + "' WHERE GNAME = '" +
+                                   GameName.Text + "'; UPDATE GAME SET RENT_PRICE_PER_DAY = '" + GamePrice.Text +
+                                   "' WHERE GNAME = '" + GameName.Text + "'; UPDATE GAME SET VENDORNAME = '" +
+                                   GameVendor.Text + "' WHERE GNAME = '" + GameName.Text +
+                                   "'; UPDATE GAME SET RELEASEDATE = '" + GameDate.Text + "' WHERE GNAME = '" +
+                                   GameName.Text + "';";
 
             try
             {
@@ -484,9 +577,9 @@ namespace GameRental
             sConnetion.Close();
         }
 
-        private void DeleteAGame()
+        public void DeleteAGame()
         {
-            SqlConnection sConnetion = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+            SqlConnection sConnetion = new SqlConnection(ConString);
             SqlCommand sCommand = new SqlCommand();
             sCommand.Connection = sConnetion;
 
@@ -509,7 +602,7 @@ namespace GameRental
             {
                 MessageBox.Show(@"Successfully Deleted", @"Success");
                 GameToDelete.Text = "";
-                gAMETableAdapter.Fill(gameRentalDataSet.GAME);
+                //
             }
             else
             {
@@ -523,21 +616,21 @@ namespace GameRental
 
         private void ApplyChanges_Click(object sender, EventArgs e)
         {
-            UpdateInformation();
+            updateInfo();
         }
 
         private void DeleteMyInfo_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show(@"Continue Deleting Your Account?", @"Sure?", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Continue Deleting Your Account?", "Sure?", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                SqlConnection sConnetion = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+                SqlConnection sConnetion = new SqlConnection(ConString);
                 SqlCommand sCommand = new SqlCommand();
                 sCommand.Connection = sConnetion;
 
                 sConnetion.Open();
 
-                sCommand.CommandText = $"DELETE FROM CLIENT WHERE USERNAME = '{_username}';";
+                sCommand.CommandText = "DELETE FROM CLIENT WHERE USERNAME = '" + UN + "';";
 
 
                 try
@@ -554,7 +647,7 @@ namespace GameRental
                 NavBar.Hide();
                 LogInPanel.BringToFront();
                 LogInPanel.Show();
-                ActiveControl = logInUserName;
+                this.ActiveControl = logInUserName;
 
                 currentUserName.Text = FN2.Text + ' ' + LN2.Text;
                 currentUserName2.Text = currentUserName.Text;
@@ -566,21 +659,23 @@ namespace GameRental
             }
             else
             {
+                return;
             }
         }
 
         private void LogOutBtn_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show(@"Log Out From Your Account?", @"Sure?", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Log Out From Your Account?", "Sure?", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
                 NavBar.Hide();
                 LogInPanel.BringToFront();
                 LogInPanel.Show();
-                ActiveControl = logInUserName;
+                this.ActiveControl = logInUserName;
             }
             else
             {
+                return;
             }
         }
 
@@ -588,20 +683,20 @@ namespace GameRental
         {
             if (e.KeyCode == Keys.Enter)
             {
-                UpdateInformation();
+                updateInfo();
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            AddGame();
+            addGame();
         }
 
         private void gName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                AddGame();
+                addGame();
             }
         }
 
@@ -613,12 +708,12 @@ namespace GameRental
         private void SearchGameBtn_Click(object sender, EventArgs e)
         {
             SearchGameBtn.Hide();
-            ActiveControl = GamesFilters;
+            this.ActiveControl = GamesFilters;
         }
 
         private void GamesFilters_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (GamesFilters.Text == @"None")
+            if (GamesFilters.Text == "None")
             {
                 SearchGameBtn.Show();
 
@@ -635,10 +730,9 @@ namespace GameRental
                 Between.Visible = false;
                 And.Visible = false;
 
-                gAMETableAdapter.Fill(gameRentalDataSet.GAME);
-                dataGridView2.DataSource = gAMETableAdapter.GetData();
+                //
             }
-            else if (GamesFilters.Text == @"Name")
+            else if (GamesFilters.Text == "Name")
             {
                 gameSearchBx1.Visible = true;
 
@@ -654,7 +748,7 @@ namespace GameRental
                 Between.Visible = false;
                 And.Visible = false;
             }
-            else if (GamesFilters.Text == @"Category")
+            else if (GamesFilters.Text == "Category")
             {
                 gameSearchBx1.Visible = true;
 
@@ -670,7 +764,7 @@ namespace GameRental
                 Between.Visible = false;
                 And.Visible = false;
             }
-            else if (GamesFilters.Text == @"Price")
+            else if (GamesFilters.Text == "Price")
             {
                 gameSearchBx1.Visible = false;
 
@@ -685,7 +779,7 @@ namespace GameRental
                 Between.Visible = true;
                 And.Visible = true;
             }
-            else if (GamesFilters.Text == @"Vendor")
+            else if (GamesFilters.Text == "Vendor")
             {
                 gameSearchBx1.Visible = true;
 
@@ -701,7 +795,7 @@ namespace GameRental
                 Between.Visible = false;
                 And.Visible = false;
             }
-            else if (GamesFilters.Text == @"Release Date")
+            else if (GamesFilters.Text == "Release Date")
             {
                 gameSearchBx1.Visible = false;
 
@@ -722,122 +816,124 @@ namespace GameRental
 
         private void GamesFilters_Leave(object sender, EventArgs e)
         {
-            if (GamesFilters.Text == @"None")
+            if (GamesFilters.Text == "None")
             {
                 SearchGameBtn.Show();
             }
         }
 
-        private string ReturnName()
+        public String returnName()
         {
-            switch (GamesFilters.Text)
+            if (GamesFilters.Text == "Name")
             {
-                case "Name":
-                    return "GNAME";
-                case "Vendor":
-                    return "VENDORNAME";
-                default:
-                    return "CATEGORY";
+                return "GNAME";
+            }
+            else if (GamesFilters.Text == "Vendor")
+            {
+                return "VENDORNAME";
+            }
+            else
+            {
+                return "CATEGORY";
             }
         }
 
-        private void SearchGame()
+        //***********************
+
+
+        public void searchGame()
         {
-            switch (GamesFilters.Text)
+            if (GamesFilters.Text == "Name" || GamesFilters.Text == "Vendor" || GamesFilters.Text == "Category")
             {
-                case @"Name":
-                case @"Vendor":
-                case @"Category":
+                SqlCommand sCommand = new SqlCommand("SELECT * FROM GAME WHERE " + returnName() + " LIKE '%" +
+                                                     gameSearchBx1.Text + "%'");
+
+                SqlConnection sConnection = new SqlConnection(ConString);
+                sCommand.Connection = sConnection;
+
+                SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
+
+                DataTable dt = new DataTable();
+
+                sDataAdapter.Fill(dt);
+                dataGridView2.DataSource = dt;
+                dataGridView2.ReadOnly = true;
+            }
+            else if (GamesFilters.Text == "Price")
+            {
+                SqlCommand sCommand;
+
+
+                if (gameSearchBx2.TextLength > 0 && gameSearchBx3.TextLength > 0)
                 {
-                    SqlCommand sCommand = new SqlCommand(
-                        $"SELECT * FROM GAME WHERE {ReturnName()} LIKE '%{gameSearchBx1.Text}%'");
-
-                    SqlConnection sConnection = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
-                    sCommand.Connection = sConnection;
-
-                    SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
-
-                    DataTable dt = new DataTable();
-
-                    sDataAdapter.Fill(dt);
-                    dataGridView2.DataSource = dt;
-                    dataGridView2.ReadOnly = true;
-                    break;
+                    sCommand = new SqlCommand("select * from GAME where RENT_PRICE_PER_DAY >= " + gameSearchBx2.Text +
+                                              " AND RENT_PRICE_PER_DAY <= " + gameSearchBx3.Text);
                 }
-                case @"Price":
+                else if (gameSearchBx2.TextLength > 0 && gameSearchBx3.TextLength == 0)
                 {
-                    SqlCommand sCommand;
-
-
-                    if (gameSearchBx2.TextLength > 0 && gameSearchBx3.TextLength > 0)
-                    {
-                        sCommand = new SqlCommand("select * from GAME where RENT_PRICE_PER_DAY >= " + gameSearchBx2.Text + " AND RENT_PRICE_PER_DAY <= " + gameSearchBx3.Text);
-                    }
-                    else if (gameSearchBx2.TextLength > 0 && gameSearchBx3.TextLength == 0)
-                    {
-                        sCommand = new SqlCommand("select * from GAME where RENT_PRICE_PER_DAY >= " + gameSearchBx2.Text);
-                    }
-                    else if (gameSearchBx2.TextLength == 0 && gameSearchBx3.TextLength > 0)
-                    {
-                        sCommand = new SqlCommand("select * from GAME where RENT_PRICE_PER_DAY <= " + gameSearchBx3.Text);
-                    }
-                    else
-                    {
-                        gAMETableAdapter.Fill(gameRentalDataSet.GAME);
-                        return;
-                    }
-                    SqlConnection sConnection = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
-                    sCommand.Connection = sConnection;
-
-                    SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
-
-                    DataTable dt = new DataTable();
-                    sDataAdapter.Fill(dt);
-                    dataGridView2.DataSource = dt;
-                    dataGridView2.ReadOnly = true;
-                    break;
+                    sCommand = new SqlCommand("select * from GAME where RENT_PRICE_PER_DAY >= " + gameSearchBx2.Text);
                 }
-                case @"Release Date":
+                else if (gameSearchBx2.TextLength == 0 && gameSearchBx3.TextLength > 0)
                 {
-                    SqlCommand sCommand = new SqlCommand(
-                        $"select * from GAME where RELEASEDATE >= '{GameDateFrom.Text}' and RELEASEDATE <= '{GameDateTo.Text}'");
-
-
-                    SqlConnection sConnection = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
-                    sCommand.Connection = sConnection;
-
-                    SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
-
-                    DataTable dt = new DataTable();
-                    sDataAdapter.Fill(dt);
-                    dataGridView2.DataSource = dt;
-                    dataGridView2.ReadOnly = true;
-                    break;
+                    sCommand = new SqlCommand("select * from GAME where RENT_PRICE_PER_DAY <= " + gameSearchBx3.Text);
                 }
+                else
+                {
+                    //
+                    return;
+                }
+
+                SqlConnection sConnection = new SqlConnection(ConString);
+                sCommand.Connection = sConnection;
+
+                SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
+
+                DataTable dt = new DataTable();
+                sDataAdapter.Fill(dt);
+                dataGridView2.DataSource = dt;
+                dataGridView2.ReadOnly = true;
+            }
+            else if (GamesFilters.Text == "Release Date")
+            {
+                SqlCommand sCommand;
+
+                sCommand = new SqlCommand("select * from GAME where RELEASEDATE >= '" + GameDateFrom.Text +
+                                          "' and RELEASEDATE <= '" + GameDateTo.Text + "'");
+
+
+                SqlConnection sConnection = new SqlConnection(ConString);
+                sCommand.Connection = sConnection;
+
+                SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
+
+                DataTable dt = new DataTable();
+                sDataAdapter.Fill(dt);
+                dataGridView2.DataSource = dt;
+                dataGridView2.ReadOnly = true;
             }
         }
 
         private void GameDateTo_ValueChanged(object sender, EventArgs e)
         {
-            SearchGame();
+            searchGame();
         }
 
         private void gameSearchBx1_KeyDown(object sender, EventArgs e)
         {
-            SearchGame();
+            searchGame();
         }
 
         private void GameName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                UpdateGameInfo();
+                updateGameInfo();
             }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            UpdateGameInfo();
+            updateGameInfo();
         }
 
         private void DeleteGame_Click(object sender, EventArgs e)
@@ -867,7 +963,7 @@ namespace GameRental
 
         private void dataGridView2_SelectionChanged(object sender, EventArgs e)
         {
-            if (GameToDelete.Visible)
+            if (GameToDelete.Visible == true)
             {
                 GameToDelete.Text = dataGridView2.SelectedCells[0].Value.ToString();
             }
@@ -875,118 +971,123 @@ namespace GameRental
 
         private void RentsSearch_TextChanged(object sender, EventArgs e)
         {
-            switch (RentsSearch.Text)
+            if (RentsSearch.Text == "Game Name" || RentsSearch.Text == "User Name")
             {
-                case @"Game Name":
-                case @"User Name":
-                    RentSearchAttr.Text = RentsSearch.Text + ':';
-                    RentSearchAttr.Visible = true;
+                RentSearchAttr.Text = RentsSearch.Text + ':';
+                RentSearchAttr.Visible = true;
 
-                    RentsTextBox.Visible = true;
+                RentsTextBox.Visible = true;
 
-                    RentsDateFrom.Visible = false;
-                    RentsDateTo.Visible = false;
+                RentsDateFrom.Visible = false;
+                RentsDateTo.Visible = false;
 
-                    AllReturnedGames.Visible = false;
-                    AllNotReturnedGames.Visible = false;
+                AllReturnedGames.Visible = false;
+                AllNotReturnedGames.Visible = false;
 
-                    Between2.Visible = false;
-                    And2.Visible = false;
-                    break;
-                case "Return Date":
-                case "Date":
-                    RentSearchAttr.Visible = false;
+                Between2.Visible = false;
+                And2.Visible = false;
 
-                    RentsTextBox.Visible = false;
+                RentsTextBox.Focus();
+            }
+            else if (RentsSearch.Text == "Return Date" || RentsSearch.Text == "Date")
+            {
+                RentSearchAttr.Visible = false;
 
-                    RentsDateFrom.Visible = true;
-                    RentsDateTo.Visible = true;
+                RentsTextBox.Visible = false;
 
-                    AllReturnedGames.Visible = false;
-                    AllNotReturnedGames.Visible = false;
+                RentsDateFrom.Visible = true;
+                RentsDateTo.Visible = true;
 
-                    Between2.Visible = true;
-                    And2.Visible = true;
-                    break;
-                case "Rent Status":
-                    RentSearchAttr.Visible = false;
+                AllReturnedGames.Visible = false;
+                AllNotReturnedGames.Visible = false;
 
-                    RentsTextBox.Visible = false;
+                Between2.Visible = true;
+                And2.Visible = true;
+            }
+            else if (RentsSearch.Text == "Rent Status")
+            {
+                RentSearchAttr.Visible = false;
 
-                    RentsDateFrom.Visible = false;
-                    RentsDateTo.Visible = false;
+                RentsTextBox.Visible = false;
 
-                    AllReturnedGames.Visible = true;
-                    AllNotReturnedGames.Visible = true;
+                RentsDateFrom.Visible = false;
+                RentsDateTo.Visible = false;
 
-                    Between2.Visible = false;
-                    And2.Visible = false;
-                    break;
-                default:
-                {
-                    RentsSerachBtn.Visible = true;
+                AllReturnedGames.Visible = true;
+                AllNotReturnedGames.Visible = true;
 
-                    RentSearchAttr.Visible = false;
+                Between2.Visible = false;
+                And2.Visible = false;
+            }
+            else
+            {
+                RentsSerachBtn.Visible = true;
 
-                    RentsTextBox.Visible = false;
+                RentSearchAttr.Visible = false;
 
-                    RentsDateFrom.Visible = false;
-                    RentsDateTo.Visible = false;
+                RentsTextBox.Visible = false;
 
-                    AllReturnedGames.Visible = false;
-                    AllNotReturnedGames.Visible = false;
+                RentsDateFrom.Visible = false;
+                RentsDateTo.Visible = false;
 
-                    Between2.Visible = false;
-                    And2.Visible = false;
+                AllReturnedGames.Visible = false;
+                AllNotReturnedGames.Visible = false;
 
-                    SqlCommand sCommand = new SqlCommand("SELECT * FROM RENT");
-                    SqlConnection sConnection = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
-                    sCommand.Connection = sConnection;
-                    SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
-                    DataTable dt = new DataTable();
-                    sDataAdapter.Fill(dt);
-                    dataGridView3.DataSource = dt;
-                    break;
-                }
+                Between2.Visible = false;
+                And2.Visible = false;
+
+                SqlCommand sCommand = new SqlCommand("SELECT * FROM RENT");
+                SqlConnection sConnection = new SqlConnection(ConString);
+                sCommand.Connection = sConnection;
+                SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
+                DataTable dt = new DataTable();
+                sDataAdapter.Fill(dt);
+                dataGridView3.DataSource = dt;
             }
         }
 
         private void RentsTextBox_TextChanged(object sender, EventArgs e)
         {
-            switch (RentsSearch.Text)
+            if (RentsSearch.Text == "Game Name")
             {
-                case "Game Name":
-                {
-                    SqlCommand sCommand = new SqlCommand("SELECT * FROM RENT WHERE GNAME LIKE '%" + RentsTextBox.Text + "%'");
-                    SqlConnection sConnection = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
-                    sCommand.Connection = sConnection;
-                    SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
-                    DataTable dt = new DataTable();
-                    sDataAdapter.Fill(dt);
-                    dataGridView3.DataSource = dt;
-                    break;
-                }
-                case "User Name":
-                {
-                    SqlCommand sCommand = new SqlCommand("SELECT * FROM RENT WHERE USERNAME LIKE '%" + RentsTextBox.Text + "%'");
-                    SqlConnection sConnection = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
-                    sCommand.Connection = sConnection;
-                    SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
-                    DataTable dt = new DataTable();
-                    sDataAdapter.Fill(dt);
-                    dataGridView3.DataSource = dt;
-                    break;
-                }
+                SqlCommand sCommand =
+                    new SqlCommand("SELECT * FROM RENT WHERE GNAME LIKE '%" + RentsTextBox.Text + "%'");
+                SqlConnection sConnection = new SqlConnection(ConString);
+                sCommand.Connection = sConnection;
+                SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
+                DataTable dt = new DataTable();
+                sDataAdapter.Fill(dt);
+                dataGridView3.DataSource = dt;
+            }
+            else if (RentsSearch.Text == "User Name")
+            {
+                SqlCommand sCommand =
+                    new SqlCommand("SELECT * FROM RENT WHERE USERNAME LIKE '%" + RentsTextBox.Text + "%'");
+                SqlConnection sConnection = new SqlConnection(ConString);
+                sCommand.Connection = sConnection;
+                SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
+                DataTable dt = new DataTable();
+                sDataAdapter.Fill(dt);
+                dataGridView3.DataSource = dt;
             }
         }
 
         private void AllNotReturnedGames_CheckedChanged(object sender, EventArgs e)
         {
-            if (RentsSearch.Text == @"Rent Status")
+            if (RentsSearch.Text == "Rent Status")
             {
-                SqlCommand sCommand = AllReturnedGames.Checked ? new SqlCommand("SELECT * FROM RENT WHERE ISRETURNED = 1") : new SqlCommand("SELECT * FROM RENT WHERE ISRETURNED != 1");
+                SqlCommand sCommand;
 
-                SqlConnection sConnection = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+                if (AllReturnedGames.Checked)
+                {
+                    sCommand = new SqlCommand("SELECT * FROM RENT WHERE ISRETURNED = 1");
+                }
+                else
+                {
+                    sCommand = new SqlCommand("SELECT * FROM RENT WHERE ISRETURNED != 1");
+                }
+
+                SqlConnection sConnection = new SqlConnection(ConString);
                 sCommand.Connection = sConnection;
                 SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
                 DataTable dt = new DataTable();
@@ -1007,18 +1108,20 @@ namespace GameRental
 
         private void button6_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show(@"Continue Renting Process?", @"Sure?", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Continue Renting Process?", "Sure?", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                DateTime dt1 = DateTime.Now.Date;
+                DateTime dt1 = new DateTime();
+                dt1 = DateTime.Now.Date;
 
-                SqlConnection sConnetion = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+                SqlConnection sConnetion = new SqlConnection(ConString);
                 SqlCommand sCommand = new SqlCommand();
                 sCommand.Connection = sConnetion;
 
                 sConnetion.Open();
 
-                sCommand.CommandText = "INSERT INTO RENT(GNAME, USERNAME, DATE) VALUES('" + NewRentGameSearch.Text + "', '" + _username + "', '" + dt1 + "')";
+                sCommand.CommandText = "INSERT INTO RENT(GNAME, USERNAME, DATE) VALUES('" + NewRentGameSearch.Text +
+                                       "', '" + UN + "', '" + dt1 + "')";
 
                 int success;
 
@@ -1038,26 +1141,31 @@ namespace GameRental
             }
             else
             {
+                return;
             }
         }
 
-        private void GetUpdatedReport()
+        public void getUpdatedReport()
         {
-            ReportText.Text = @"The Most Interesting Game is ";
+            ReportText.Text = "The Most Interesting Game is ";
 
-            SqlConnection sConnetion = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+            SqlConnection sConnetion = new SqlConnection(ConString);
             SqlCommand sCommand = new SqlCommand();
             sCommand.Connection = sConnetion;
 
             sConnetion.Open();
 
-            sCommand.CommandText = "SELECT TOP 1 GNAME AS TOPGAME, COUNT(USERNAME) AS RENTERS FROM RENT GROUP BY GNAME ORDER BY COUNT(USERNAME) DESC";
+            SqlDataReader sReader;
 
-            SqlDataReader sReader = sCommand.ExecuteReader();
+            sCommand.CommandText =
+                "SELECT TOP 1 GNAME AS TOPGAME, COUNT(USERNAME) AS RENTERS FROM RENT GROUP BY GNAME ORDER BY COUNT(USERNAME) DESC";
+
+            sReader = sCommand.ExecuteReader();
 
             if (sReader.Read())
             {
-                ReportText.Text = ReportText.Text + sReader["TOPGAME"] + @" With " + sReader["RENTERS"] + " Renters.\r\n\r\n";
+                ReportText.Text = ReportText.Text + sReader["TOPGAME"].ToString() + " With " +
+                                  sReader["RENTERS"].ToString() + " Renters.\r\n\r\n";
             }
 
             sConnetion.Close();
@@ -1065,117 +1173,140 @@ namespace GameRental
             //----------------------------------------------------
             ReportText.Text += "The Games That Didn't Have Any Renting in The Last 30 Days Are:\r\n";
 
-            SqlConnection sConnetion1 = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+            SqlConnection sConnetion1 = new SqlConnection(ConString);
             SqlCommand sCommand1 = new SqlCommand();
             sCommand1.Connection = sConnetion1;
 
             sConnetion1.Open();
 
-            sCommand1.CommandText = "SELECT GNAME FROM GAME  EXCEPT SELECT GNAME FROM RENT WHERE RENT.DATE >= DATEADD(DAY, -30, GETDATE())";
+            SqlDataReader sReader1;
 
-            SqlDataReader sReader1 = sCommand1.ExecuteReader();
+            sCommand1.CommandText =
+                "SELECT GNAME FROM GAME  EXCEPT SELECT GNAME FROM RENT WHERE RENT.DATE >= DATEADD(DAY, -30, GETDATE())";
+
+            sReader1 = sCommand1.ExecuteReader();
 
             while (sReader1.Read())
             {
-                ReportText.Text = ReportText.Text + sReader1["GNAME"] + @", ";
+                ReportText.Text = ReportText.Text + sReader1["GNAME"].ToString() + ", ";
             }
+
             ReportText.Text = ReportText.Text.Remove(ReportText.Text.Length - 2);
             ReportText.Text += ".\r\n\r\n";
 
             //----------------------------------------------------
             ReportText.Text += "The Games That Didn't Have Any Renting in The Last Month Are:\r\n";
 
-            SqlConnection sConnetion2 = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+            SqlConnection sConnetion2 = new SqlConnection(ConString);
             SqlCommand sCommand2 = new SqlCommand();
             sCommand2.Connection = sConnetion2;
 
             sConnetion2.Open();
 
-            sCommand2.CommandText = "SELECT GNAME FROM GAME EXCEPT SELECT GNAME FROM RENT WHERE DATEPART(MONTH FROM RENT.DATE) = DATEPART(MONTH FROM GETDATE()) - 1 AND DATEPART(YEAR FROM RENT.DATE) = DATEPART(YEAR FROM GETDATE())";
+            SqlDataReader sReader2;
 
-            SqlDataReader sReader2 = sCommand2.ExecuteReader();
+            sCommand2.CommandText =
+                "SELECT GNAME FROM GAME EXCEPT SELECT GNAME FROM RENT WHERE DATEPART(MONTH FROM RENT.DATE) = DATEPART(MONTH FROM GETDATE()) - 1 AND DATEPART(YEAR FROM RENT.DATE) = DATEPART(YEAR FROM GETDATE())";
+
+            sReader2 = sCommand2.ExecuteReader();
 
             while (sReader2.Read())
             {
-                ReportText.Text = ReportText.Text + sReader2["GNAME"] + @", ";
+                ReportText.Text = ReportText.Text + sReader2["GNAME"].ToString() + ", ";
             }
+
             ReportText.Text = ReportText.Text.Remove(ReportText.Text.Length - 2);
             ReportText.Text += ".\r\n\r\n";
 
             //----------------------------------------------------
-            ReportText.Text += @"The Client With The Maximum Number Of Renting Last Month is: ";
+            ReportText.Text += "The Client With The Maximum Number Of Rentings Last Month is:\r\n";
 
-            SqlConnection sConnetion3 = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+            SqlConnection sConnetion3 = new SqlConnection(ConString);
             SqlCommand sCommand3 = new SqlCommand();
             sCommand3.Connection = sConnetion3;
 
             sConnetion3.Open();
 
-            sCommand3.CommandText = "SELECT CLIENT.FNAME AS FN, CLIENT.LNAME AS LN, COUNT(GNAME) AS RENTS FROM CLIENT, RENT WHERE CLIENT.USERNAME = RENT.USERNAME AND RENT.USERNAME IN(SELECT TOP 1 USERNAME FROM RENT WHERE DATEPART(MONTH FROM RENT.DATE) = DATEPART(MONTH FROM GETDATE()) - 1 AND DATEPART(YEAR FROM RENT.DATE) = DATEPART(YEAR FROM GETDATE()) GROUP BY USERNAME ORDER BY COUNT(GNAME) DESC) GROUP BY FNAME, LNAME";
+            SqlDataReader sReader3;
 
-            SqlDataReader sReader3 = sCommand3.ExecuteReader();
+            sCommand3.CommandText =
+                "SELECT CLIENT.FNAME AS FN, CLIENT.LNAME AS LN, COUNT(GNAME) AS RENTS FROM CLIENT, RENT WHERE CLIENT.USERNAME = RENT.USERNAME AND RENT.USERNAME IN(SELECT TOP 1 USERNAME FROM RENT WHERE DATEPART(MONTH FROM RENT.DATE) = DATEPART(MONTH FROM GETDATE()) - 1 AND DATEPART(YEAR FROM RENT.DATE) = DATEPART(YEAR FROM GETDATE()) GROUP BY USERNAME ORDER BY COUNT(GNAME) DESC) GROUP BY FNAME, LNAME";
+
+            sReader3 = sCommand3.ExecuteReader();
 
             if (sReader3.Read())
             {
-                ReportText.Text =
-                    $"{ReportText.Text}{sReader3["FN"]} {sReader3["LN"]} With {sReader3["RENTS"]} Rentings.\r\n\r\n";
+                ReportText.Text = ReportText.Text + sReader3["FN"].ToString() + ' ' + sReader3["LN"].ToString() +
+                                  " With " + sReader3["RENTS"].ToString() + " Rentings.\r\n\r\n";
             }
 
             //----------------------------------------------------
-            ReportText.Text += @"The Vendor With The Maximum Renting out Last Month is: ";
+            ReportText.Text += "The Vendor With The Maximum Renting out Last Month is:\r\n";
 
-            SqlConnection sConnetion4 = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+            SqlConnection sConnetion4 = new SqlConnection(ConString);
             SqlCommand sCommand4 = new SqlCommand();
             sCommand4.Connection = sConnetion4;
 
             sConnetion4.Open();
 
-            sCommand4.CommandText = "SELECT TOP 1 VENDORNAME AS VENDOR, COUNT(RENT.USERNAME) AS RENTS FROM RENT JOIN GAME ON RENT.GNAME = GAME.GNAME WHERE DATEPART(MONTH FROM RENT.DATE) = DATEPART(MONTH FROM GETDATE()) - 1 AND DATEPART(YEAR FROM RENT.DATE) = DATEPART(YEAR FROM GETDATE()) GROUP BY VENDORNAME ORDER BY COUNT(VENDORNAME) DESC";
+            SqlDataReader sReader4;
 
-            SqlDataReader sReader4 = sCommand4.ExecuteReader();
+            sCommand4.CommandText =
+                "SELECT TOP 1 VENDORNAME AS VENDOR, COUNT(RENT.USERNAME) AS RENTS FROM RENT JOIN GAME ON RENT.GNAME = GAME.GNAME WHERE DATEPART(MONTH FROM RENT.DATE) = DATEPART(MONTH FROM GETDATE()) - 1 AND DATEPART(YEAR FROM RENT.DATE) = DATEPART(YEAR FROM GETDATE()) GROUP BY VENDORNAME ORDER BY COUNT(VENDORNAME) DESC";
+
+            sReader4 = sCommand4.ExecuteReader();
 
             if (sReader4.Read())
             {
-                ReportText.Text = ReportText.Text + sReader4["VENDOR"] + @" With " + sReader4["RENTS"] + " Rentings.\r\n\r\n";
+                ReportText.Text = ReportText.Text + sReader4["VENDOR"].ToString() + " With " +
+                                  sReader4["RENTS"].ToString() + " Rentings.\r\n\r\n";
             }
 
             //----------------------------------------------------
             ReportText.Text += "The Vendors Whose Games Didn't Have Any Renting in The Last Month Are:\r\n";
 
-            SqlConnection sConnetion5 = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+            SqlConnection sConnetion5 = new SqlConnection(ConString);
             SqlCommand sCommand5 = new SqlCommand();
             sCommand5.Connection = sConnetion5;
 
             sConnetion5.Open();
 
-            sCommand5.CommandText = "SELECT GAME.VENDORNAME AS VENDOR FROM GAME EXCEPT SELECT GAME.VENDORNAME FROM GAME WHERE GNAME IN(SELECT GNAME FROM RENT WHERE DATEPART(MONTH FROM RENT.DATE) = DATEPART(MONTH FROM GETDATE()) - 1 AND DATEPART(YEAR FROM RENT.DATE) = DATEPART(YEAR FROM GETDATE()))";
+            SqlDataReader sReader5;
 
-            SqlDataReader sReader5 = sCommand5.ExecuteReader();
+            sCommand5.CommandText =
+                "SELECT GAME.VENDORNAME AS VENDOR FROM GAME EXCEPT SELECT GAME.VENDORNAME FROM GAME WHERE GNAME IN(SELECT GNAME FROM RENT WHERE DATEPART(MONTH FROM RENT.DATE) = DATEPART(MONTH FROM GETDATE()) - 1 AND DATEPART(YEAR FROM RENT.DATE) = DATEPART(YEAR FROM GETDATE()))";
+
+            sReader5 = sCommand5.ExecuteReader();
 
             while (sReader5.Read())
             {
-                ReportText.Text = ReportText.Text + sReader5["VENDOR"] + @", ";
+                ReportText.Text = ReportText.Text + sReader5["VENDOR"].ToString() + ", ";
             }
+
             ReportText.Text = ReportText.Text.Remove(ReportText.Text.Length - 2);
             ReportText.Text += ".\r\n\r\n";
 
             //----------------------------------------------------
             ReportText.Text += "The Vendors Who Dind't Add Any Games Last Year Are:\r\n";
 
-            SqlConnection sConnetion6 = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+            SqlConnection sConnetion6 = new SqlConnection(ConString);
             SqlCommand sCommand6 = new SqlCommand();
             sCommand6.Connection = sConnetion6;
 
             sConnetion6.Open();
 
-            sCommand6.CommandText = "SELECT GAME.VENDORNAME AS VENDOR FROM GAME EXCEPT SELECT GAME.VENDORNAME FROM GAME WHERE GNAME IN(SELECT GNAME FROM RENT WHERE DATEPART(MONTH FROM RENT.DATE) = DATEPART(MONTH FROM GETDATE()) - 1 AND DATEPART(YEAR FROM RENT.DATE) = DATEPART(YEAR FROM GETDATE()))";
+            SqlDataReader sReader6;
 
-            SqlDataReader sReader6 = sCommand6.ExecuteReader();
+            sCommand6.CommandText =
+                "SELECT GAME.VENDORNAME AS VENDOR FROM GAME EXCEPT SELECT GAME.VENDORNAME FROM GAME WHERE GNAME IN(SELECT GNAME FROM RENT WHERE DATEPART(MONTH FROM RENT.DATE) = DATEPART(MONTH FROM GETDATE()) - 1 AND DATEPART(YEAR FROM RENT.DATE) = DATEPART(YEAR FROM GETDATE()))";
+
+            sReader6 = sCommand6.ExecuteReader();
 
             while (sReader6.Read())
             {
-                ReportText.Text = ReportText.Text + sReader6["VENDOR"] + @", ";
+                ReportText.Text = ReportText.Text + sReader6["VENDOR"].ToString() + ", ";
             }
+
             ReportText.Text = ReportText.Text.Remove(ReportText.Text.Length - 2);
             ReportText.Text += ".\r\n\r\n";
 
@@ -1187,15 +1318,15 @@ namespace GameRental
         private void ViewReport_Click(object sender, EventArgs e)
         {
             QuickReportPanel.BringToFront();
-            GetUpdatedReport();
+            getUpdatedReport();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Process.Start("notepad.exe", "Sql Statements.txt");
+            System.Diagnostics.Process.Start("notepad.exe", "Sql Statements.txt");
         }
 
-        private void RentsSearchBtn_Click(object sender, EventArgs e)
+        private void RentsSerachBtn_Click(object sender, EventArgs e)
         {
             RentsSerachBtn.Visible = false;
         }
@@ -1213,22 +1344,20 @@ namespace GameRental
 
         private void UserSearchOption_TextChanged(object sender, EventArgs e)
         {
-            UserSearchAttr.Text = $@"{UserSearchOption.Text}:";
+            UserSearchAttr.Text = UserSearchOption.Text + ':';
 
-            if (UserSearchOption.Text == @"First Name" || UserSearchOption.Text == @"Last Name" || UserSearchOption.Text == @"User Name")
+            if (UserSearchOption.Text == "First Name" || UserSearchOption.Text == "Last Name" ||
+                UserSearchOption.Text == "User Name")
             {
-
                 UserSearchAttr.Visible = true;
 
                 AllAdmins.Visible = false;
                 NotAdmins.Visible = false;
 
                 UserSearchBox.Visible = true;
-
             }
-            else if(UserSearchOption.Text == @"Authority")
+            else if (UserSearchOption.Text == "Authority")
             {
-
                 UserSearchBtn.Visible = true;
 
                 AllAdmins.Visible = true;
@@ -1247,7 +1376,7 @@ namespace GameRental
 
                 SqlCommand sCommand = new SqlCommand("SELECT * FROM CLIENT");
 
-                SqlConnection sConnection = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+                SqlConnection sConnection = new SqlConnection(ConString);
                 sCommand.Connection = sConnection;
 
                 SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
@@ -1264,11 +1393,12 @@ namespace GameRental
 
         private void UserSearchBox_TextChanged(object sender, EventArgs e)
         {
-            if (UserSearchOption.Text == @"First Name")
+            if (UserSearchOption.Text == "First Name")
             {
-                SqlCommand sCommand = new SqlCommand("SELECT * FROM CLIENT WHERE FNAME LIKE '%" + UserSearchBox.Text + "%'");
+                SqlCommand sCommand =
+                    new SqlCommand("SELECT * FROM CLIENT WHERE FNAME LIKE '%" + UserSearchBox.Text + "%'");
 
-                SqlConnection sConnection = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+                SqlConnection sConnection = new SqlConnection(ConString);
                 sCommand.Connection = sConnection;
 
                 SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
@@ -1281,11 +1411,12 @@ namespace GameRental
 
                 sConnection.Close();
             }
-            else if (UserSearchOption.Text == @"Last Name")
+            else if (UserSearchOption.Text == "Last Name")
             {
-                SqlCommand sCommand = new SqlCommand($"SELECT * FROM CLIENT WHERE LNAME LIKE '%{UserSearchBox.Text}%'");
+                SqlCommand sCommand =
+                    new SqlCommand("SELECT * FROM CLIENT WHERE LNAME LIKE '%" + UserSearchBox.Text + "%'");
 
-                SqlConnection sConnection = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+                SqlConnection sConnection = new SqlConnection(ConString);
                 sCommand.Connection = sConnection;
 
                 SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
@@ -1298,12 +1429,12 @@ namespace GameRental
 
                 sConnection.Close();
             }
-            else if (UserSearchOption.Text == @"User Name")
+            else if (UserSearchOption.Text == "User Name")
             {
-                SqlCommand sCommand = new SqlCommand(
-                    $"SELECT * FROM CLIENT WHERE USERNAME LIKE '%{UserSearchBox.Text}%'");
+                SqlCommand sCommand =
+                    new SqlCommand("SELECT * FROM CLIENT WHERE USERNAME LIKE '%" + UserSearchBox.Text + "%'");
 
-                SqlConnection sConnection = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+                SqlConnection sConnection = new SqlConnection(ConString);
                 sCommand.Connection = sConnection;
 
                 SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
@@ -1320,11 +1451,11 @@ namespace GameRental
 
         private void AllAdmins_CheckedChanged(object sender, EventArgs e)
         {
-            if(AllAdmins.Checked)
+            if (AllAdmins.Checked)
             {
                 SqlCommand sCommand = new SqlCommand("SELECT * FROM CLIENT WHERE ADMIN = 1");
 
-                SqlConnection sConnection = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+                SqlConnection sConnection = new SqlConnection(ConString);
                 sCommand.Connection = sConnection;
 
                 SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
@@ -1341,11 +1472,11 @@ namespace GameRental
 
         private void NotAdmins_CheckedChanged(object sender, EventArgs e)
         {
-            if(NotAdmins.Checked)
+            if (NotAdmins.Checked)
             {
                 SqlCommand sCommand = new SqlCommand("SELECT * FROM CLIENT WHERE ADMIN != 1");
 
-                SqlConnection sConnection = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+                SqlConnection sConnection = new SqlConnection(ConString);
                 sCommand.Connection = sConnection;
 
                 SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
@@ -1362,10 +1493,11 @@ namespace GameRental
 
         private void RentsDateTo_ValueChanged(object sender, EventArgs e)
         {
-            if(RentsSearch.Text == @"Date")
+            if (RentsSearch.Text == "Date")
             {
-                SqlCommand sCommand = new SqlCommand("SELECT * FROM RENT WHERE DATE >= '" + RentsDateFrom.Text + "' AND DATE <= '" + RentsDateTo.Text + "'");
-                SqlConnection sConnection = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+                SqlCommand sCommand = new SqlCommand("SELECT * FROM RENT WHERE DATE >= '" + RentsDateFrom.Text +
+                                                     "' AND DATE <= '" + RentsDateTo.Text + "'");
+                SqlConnection sConnection = new SqlConnection(ConString);
                 sCommand.Connection = sConnection;
                 SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
                 DataTable dt = new DataTable();
@@ -1374,22 +1506,30 @@ namespace GameRental
             }
             else
             {
-                SqlCommand sCommand = new SqlCommand("SELECT * FROM RENT WHERE RETURNDATE >= '" + RentsDateFrom.Text + "' AND DATE <= '" + RentsDateTo.Text + "'");
-                SqlConnection sConnection = new SqlConnection("Data Source=.;Initial Catalog=gameRental;Integrated Security=True");
+                SqlCommand sCommand = new SqlCommand("SELECT * FROM RENT WHERE RETURNDATE >= '" + RentsDateFrom.Text +
+                                                     "' AND DATE <= '" + RentsDateTo.Text + "'");
+                SqlConnection sConnection = new SqlConnection(ConString);
                 sCommand.Connection = sConnection;
                 SqlDataAdapter sDataAdapter = new SqlDataAdapter(sCommand);
                 DataTable dt = new DataTable();
                 sDataAdapter.Fill(dt);
                 dataGridView3.DataSource = dt;
             }
-            
         }
 
-        private void n1_Click(object sender, EventArgs e)
-        {
+        [DllImport("User32.dll")]
+        public static extern bool ReleaseCapture();
 
+        [DllImport("User32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+        private void TitleBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+            }
         }
     }
 }
-    
-

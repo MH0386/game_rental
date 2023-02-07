@@ -1,0 +1,10 @@
+D:\Youssef\FCAI\Term 4\Data Base\Project\GameRental\bin\Release\Game Rental.exe.config
+D:\Youssef\FCAI\Term 4\Data Base\Project\GameRental\bin\Release\Game Rental.exe
+D:\Youssef\FCAI\Term 4\Data Base\Project\GameRental\bin\Release\Game Rental.pdb
+D:\Youssef\FCAI\Term 4\Data Base\Project\GameRental\obj\Release\GameRental.csproj.AssemblyReference.cache
+D:\Youssef\FCAI\Term 4\Data Base\Project\GameRental\obj\Release\GameRental.Form1.resources
+D:\Youssef\FCAI\Term 4\Data Base\Project\GameRental\obj\Release\GameRental.Properties.Resources.resources
+D:\Youssef\FCAI\Term 4\Data Base\Project\GameRental\obj\Release\GameRental.csproj.GenerateResource.cache
+D:\Youssef\FCAI\Term 4\Data Base\Project\GameRental\obj\Release\GameRental.csproj.CoreCompileInputs.cache
+D:\Youssef\FCAI\Term 4\Data Base\Project\GameRental\obj\Release\Game Rental.exe
+D:\Youssef\FCAI\Term 4\Data Base\Project\GameRental\obj\Release\Game Rental.pdb

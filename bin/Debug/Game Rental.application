@@ -7,14 +7,14 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Game Rental.exe.manifest" size="3954">
+    <dependentAssembly dependencyType="install" codebase="Game Rental.exe.manifest" size="5460">
       <assemblyIdentity name="Game Rental.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>wbZykQpo61SCvo6Q1A/ZoS0AJ8vXwv5oCaIUOM/RAZ8=</dsig:DigestValue>
+        <dsig:DigestValue>wMp62YV9qV2mYXFbwF07MFw32q7Zh7jltJPuV7sf0Uc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
