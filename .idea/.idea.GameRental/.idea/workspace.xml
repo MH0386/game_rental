@@ -4,10 +4,7 @@
     <projectFile>GameRental.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fd02195-0b7f-4469-85a5-de2227d56c1c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/bin/Debug/GameRental.mdf" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/GameRental.mdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/GameRental_log.ldf" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/GameRental_log.ldf" afterDir="false" />
-    </list>
+    <list default="true" id="4fd02195-0b7f-4469-85a5-de2227d56c1c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,7 +75,7 @@
       <workItem from="1675795372796" duration="209000" />
       <workItem from="1675795784763" duration="164000" />
       <workItem from="1675804978182" duration="786000" />
-      <workItem from="1675805779475" duration="414000" />
+      <workItem from="1675805779475" duration="708000" />
     </task>
     <task id="LOCAL-00001" summary="jj">
       <created>1675795874365</created>
@@ -115,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675805873783</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="gg">
+      <created>1675806429330</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1675806429330</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,7 +145,6 @@
     <MESSAGE value="ff" />
     <MESSAGE value="jj" />
     <MESSAGE value="ggg" />
-    <MESSAGE value="gg" />
     <MESSAGE value="bbbbbbbbbbbb" />
     <MESSAGE value="hghj" />
     <MESSAGE value="hh" />
@@ -150,7 +153,8 @@
     <MESSAGE value="ghgh" />
     <MESSAGE value="fhf" />
     <MESSAGE value="data" />
-    <option name="LAST_COMMIT_MESSAGE" value="data" />
+    <MESSAGE value="gg" />
+    <option name="LAST_COMMIT_MESSAGE" value="gg" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
