@@ -5,6 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fd02195-0b7f-4469-85a5-de2227d56c1c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.GameRental/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.GameRental/.idea/dataSources/0ac3ba77-3cc7-41f1-88e0-0b332167db8e.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.GameRental/.idea/dataSources/0ac3ba77-3cc7-41f1-88e0-0b332167db8e/storage_v2/_src_/database/master.YiqNvw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.GameRental/.idea/dataSources/0ac3ba77-3cc7-41f1-88e0-0b332167db8e/storage_v2/_src_/database/master.YiqNvw/schema/INFORMATION_SCHEMA.NBgcMw.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.GameRental/.idea/dataSources/0ac3ba77-3cc7-41f1-88e0-0b332167db8e/storage_v2/_src_/database/master.YiqNvw/schema/dbo.sYMBAA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.GameRental/.idea/dataSources/0ac3ba77-3cc7-41f1-88e0-0b332167db8e/storage_v2/_src_/database/master.YiqNvw/schema/dbo.sYMBAA.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.GameRental/.idea/dataSources/0ac3ba77-3cc7-41f1-88e0-0b332167db8e/storage_v2/_src_/database/master.YiqNvw/schema/sys.zb4BAA.meta" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/.idea.GameRental/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/.idea.GameRental/.idea/workspace.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/GameRental.mdf" afterDir="false" />
@@ -136,7 +143,7 @@
       <option name="presentableId" value="Default" />
       <updated>1675794767975</updated>
       <workItem from="1675794769968" duration="592000" />
-      <workItem from="1675795372796" duration="14000" />
+      <workItem from="1675795372796" duration="209000" />
     </task>
     <servers />
   </component>
@@ -150,7 +157,9 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="change sql server to sql server localdb" />
     <MESSAGE value="gg" />
-    <option name="LAST_COMMIT_MESSAGE" value="gg" />
+    <MESSAGE value="hh" />
+    <MESSAGE value="ff" />
+    <option name="LAST_COMMIT_MESSAGE" value="ff" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
